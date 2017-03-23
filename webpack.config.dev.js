@@ -3,12 +3,18 @@ import webpack from 'webpack';
 
 export default {
   entry: [
-    path.join(__dirname, '/client/index.js')
+   'webpack-hot-middleware/client?reload=true',
+    path.join(__dirname, './client/index.js')
   ],
   output: {
   	filename: 'bundle.js',
     path: '/',
+    publicPath: '/'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ],
   module: {
     loaders: [
       {
@@ -16,7 +22,7 @@ export default {
         include: [
           path.join(__dirname, 'client'),
         ],
-        loaders: [ 'babel-loader' ]
+        loaders: ['babel-loader' ]
       }
     ]
   },
