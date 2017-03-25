@@ -7,7 +7,14 @@ let router = express.Router();
 router.post('/', (req,res) => {
 	const { errors, isValid } = validateInput(req.body);
 
-	if(!isValid){
+	if(isValid){
+		res.json({
+			success:true
+		})
+	}
+	else
+	{
+		//return error 400 if user input is invalid
 		res.status(400).json(errors);
 	}
 

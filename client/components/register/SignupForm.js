@@ -4,7 +4,7 @@ import map from 'lodash/map';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validation/validateSignup';	
 import TextField from '../generic/TextField';
-
+import { browserHistory } from 'react-router';
 
 class SignupForm extends React.Component{
 	constructor(props){
@@ -41,8 +41,11 @@ class SignupForm extends React.Component{
 		 	this.setState({errors : {}, isLoading: true});
 		 	//check for any possible errors with current input
 		 	//if there are errors, they will be displayed on client via render
+		 	//if there isn't, the client will be redirected to main page
 		 	this.props.userRegisterRequest(this.state).then(
-		 		() => {},
+		 		() => {
+		 			browserHistory.push('/');
+		 		},
 		 		({response})=>{this.setState({errors:response.data, isLoading: false})}
 		 	);
 	 	}
