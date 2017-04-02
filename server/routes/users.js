@@ -11,6 +11,31 @@ router.post('/', (req,res) => {
 		res.json({
 			success:true
 		})
+
+		//create new user
+			// const email = req.body.email;
+			// const password = req.body.password + "";
+			// const password_hashed = bcrypt.hashSync(password,10);
+			// console.log(password_hashed);
+
+			// var fs = require("fs");
+			// var file = "./jains.db";
+			// var exists = fs.existsSync(file);
+
+			// var sqlite3 = require("sqlite3").verbose();
+			// var db = new sqlite3.Database(file);
+
+			// db.serialize(function() {
+			// 	if(!exists){
+			// 		db.run("CREATE TABLE users(email TEXT UNIQUE, password TEXT)");
+			// 	}
+	  
+	  //   	db.run("INSERT INTO users VALUES('"+ email+"','"+ password_hashed+"')");
+			// });
+			// db.close();
+			// res.json({
+			// 	success:true
+			// });
 	}
 	else
 	{

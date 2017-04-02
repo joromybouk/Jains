@@ -1,19 +1,17 @@
 import React from 'react';
 import map from 'lodash/map';
 import classnames from 'classnames';
-import validateInput from '../../../server/shared/validation/validateSignup';	
+import validateInput from '../../../server/shared/validation/validateLogin';	
 import TextField from '../generic/TextField';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 
-
-class SignupForm extends React.Component{
+class LoginForm extends React.Component{
 	constructor(props){
     	super(props);
     	this.state ={
       		email : '',
       		password : '',
-      		passwordConfirmation: '',
       		errors: {},
       		isLoading : false
 
@@ -54,7 +52,7 @@ class SignupForm extends React.Component{
 		const { errors } = this.state;
 		return(
 			<form onSubmit = {this.onSubmit}>
-				<h1>Join the Jainers!</h1>
+				<h1>Log back in!</h1>
 				
 				<TextField 
 				error={errors.email}
@@ -71,31 +69,23 @@ class SignupForm extends React.Component{
 				field="password"
 				type="password"
 				/>
-				<TextField 
-				error={errors.passwordConfirmation}
-				label="Password Confirmation"
-				onChange={this.onChange}
-				value={this.state.passwordConfirmation}
-				field="passwordConfirmation"
-				type="password"
-				/>
-
 				
 				<div className="form-group">
 				<button
 					disabled={this.state.isLoading}
 					className = "btn btn-primary btn-lg">
-					Register
+					Log in
 				</button>
 				</div>
 				<div>
-			 <Link to = "/" className = "navbar-brand">Sign in</Link>
+			 <Link to = "/register" className = "navbar-brand">Sign up now!</Link>
 				</div>
+				
 			</form>
 		);
 	}
 }
-SignupForm.propTypes = {
+LoginForm.propTypes = {
 	userRegisterRequest: React.PropTypes.func.isRequired
 }
-export default SignupForm;
+export default LoginForm;
