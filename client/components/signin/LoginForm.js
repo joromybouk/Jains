@@ -40,7 +40,7 @@ class LoginForm extends React.Component{
 		 	//check for any possible errors with current input
 		 	//if there are errors, they will be displayed on client via render
 		 	//if there isn't, the client will be redirected to main page
-		 	this.props.userRegisterRequest(this.state).then(
+		 	this.props.login(this.state).then(
 		 		() => {
 		 			browserHistory.push('/');
 		 		},
@@ -86,6 +86,6 @@ class LoginForm extends React.Component{
 	}
 }
 LoginForm.propTypes = {
-	userRegisterRequest: React.PropTypes.func.isRequired
+	login: React.PropTypes.func.isRequired
 }
 export default LoginForm;

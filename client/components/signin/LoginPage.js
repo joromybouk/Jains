@@ -1,22 +1,22 @@
 import React from 'react';
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux';
-import { userRegisterRequest } from '../../actions/registerActions';
+import { login } from '../../actions/authAction';
 
 class LoginPage extends React.Component{
 	render(){
-		const {userRegisterRequest } = this.props;
+		const {login } = this.props;
 		return(
 			<div className = "row">
 				<div className = "col-md-4 col-md-offset-4">
-					<LoginForm userRegisterRequest={LoginForm}/>
+					<LoginForm login={login}/>
 				</div>
 			</div>
 		);
 	}
 }
 LoginPage.propTypes = {
-	userRegisterRequest: React.PropTypes.func.isRequired
+	login: React.PropTypes.func.isRequired
 }
 
-export default connect(null, { userRegisterRequest })(LoginPage);
+export default connect(null, { login })(LoginPage);
