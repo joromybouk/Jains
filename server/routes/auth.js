@@ -34,12 +34,10 @@ function checkEmail(db,res,errors,email,password){
 			for(var i = 0; i < row.length; i ++){
 				if(row[i].email == email){
 					validEmail = true;
-					//Password and email are valid
+					//Password and email are valid so get token
 					if(bcrypt.compareSync(password,row[i].password)){
-
 						const token = jwt.sign({email: row[i].email}, 
 							config.jwtSecret);
-
 						res.json({
 							token
 						});
