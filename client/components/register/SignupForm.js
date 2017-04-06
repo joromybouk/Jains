@@ -88,9 +88,6 @@ class SignupForm extends React.Component{
 					Register
 				</button>
 				</div>
-				<div>
-			 <Link to = "/" className = "navbar-brand">Sign in</Link>
-				</div>
 			</form>
 		);
 	}

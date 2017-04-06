@@ -10,7 +10,6 @@ import { setCurrentUser } from './actions/authAction';
 import jwtDecode from 'jwt-decode';
 import routes from './routes';
 import rootReducer from './rootReducer';
-
 import App from './components/App';
 
 const store = createStore(

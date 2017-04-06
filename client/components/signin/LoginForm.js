@@ -42,7 +42,7 @@ class LoginForm extends React.Component{
 		 	//if there isn't, the client will be redirected to main page
 		 	this.props.login(this.state).then(
 		 		() => {
-		 			browserHistory.push('/');
+		 			browserHistory.push('/mainpage');
 		 		},
 		 		({response})=>{this.setState({errors:response.data, isLoading: false})}
 		 	);
@@ -76,9 +76,6 @@ class LoginForm extends React.Component{
 					className = "btn btn-primary btn-lg">
 					Log in
 				</button>
-				</div>
-				<div>
-			 <Link to = "/register" className = "navbar-brand">Sign up now!</Link>
 				</div>
 				
 			</form>

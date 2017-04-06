@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userRegisterRequest } from '../../actions/registerActions';
+import { browserHistory } from 'react-router';
 
 class MainPage extends React.Component{
 	render(){
-		//const {userRegisterRequest } = this.props;
+		
 		return(
 			<div className = "row">
 				<div className = "col-md-4 col-md-offset-4">
@@ -16,8 +16,13 @@ class MainPage extends React.Component{
 		);
 	}
 }
-// RegisterPage.propTypes = {
-// 	userRegisterRequest: React.PropTypes.func.isRequired
-// }
-export default MainPage;
-// export default connect(null, { userRegisterRequest })(RegisterPage);
+MainPage.propTypes={
+  auth: React.PropTypes.object.isRequired
+}
+
+function mapStateToProps(state){
+  return{
+    auth: state.auth
+  };
+}
+export default connect(mapStateToProps)(MainPage);
