@@ -5,7 +5,7 @@ import { login } from '../../actions/authAction';
 
 class LoginPage extends React.Component{
 	render(){
-		const {login } = this.props;
+		const { login } = this.props;
 		return(
 			<div className = "row">
 				<div className = "col-md-4 col-md-offset-4">

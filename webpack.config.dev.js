@@ -1,6 +1,6 @@
 import path from 'path'
 import webpack from 'webpack';
-
+  var ExtractTextPlugin = require('extract-text-webpack-plugin');
 export default {
 
   entry: [
@@ -13,6 +13,7 @@ export default {
     publicPath: '/'
   },
   plugins: [
+    new ExtractTextPlugin('styles.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
@@ -27,6 +28,7 @@ export default {
         loaders: ['babel-loader' ]
       },
         {test: /\.json$/, loader: 'json-loader'},
+        {test: /\.css$/, loader: "style-loader!css-loader"},
     ]
   },
 
@@ -36,5 +38,6 @@ export default {
   node:{
     dns:'empty',
     net:'empty'
+
   }
 }

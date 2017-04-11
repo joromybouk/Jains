@@ -9,13 +9,21 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import users from './routes/users';
 import auth from './routes/auth';
+import workouts from './routes/workouts';
+import muscles from './routes/muscles';
+import exercises from './routes/exercises';
+import set from './routes/set';
 
 let app = express();
 
-app.use(bodyParser.json());
+	app.use(bodyParser.json());
 
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+app.use('/api/workouts', workouts);
+app.use('/api/muscles', muscles);
+app.use('/api/exercises', exercises);
+app.use('/api/set', set);
 
 
 const compiler = webpack(webpackConfig);

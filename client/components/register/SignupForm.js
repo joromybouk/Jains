@@ -16,7 +16,6 @@ class SignupForm extends React.Component{
       		passwordConfirmation: '',
       		errors: {},
       		isLoading : false
-
       	}
       	this.onChange = this.onChange.bind(this);
       	this.onSubmit = this.onSubmit.bind(this);
