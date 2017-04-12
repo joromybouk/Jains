@@ -1,29 +1,37 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { registerWorkoutInfo, deleteMusle } from '../../../../actions/workoutActions';
 import MuscleList from './MuscleList';
-import includes from 'lodash';
-import { registerWorkoutInfo } from '../../../actions/workoutActions';
 
-require('./styles.css');
-// <MuscleList muscles={this.state.muscles} />
-class Workout extends React.Component{
+require('../../workout/styles.css');
+
+class Muscle extends React.Component{
 	constructor(props){
-    	super(props);
-    	this.state ={
-    		muscles : [],
-      		visible : false,
+		super(props);
+		this.state= {
+			muscles: this.setCurrentMuscles(),
+			visible : false,
       		hideAll : false,
       		exerciseOption: false,
-      	}
-      	this.turnOff = this.turnOff.bind(this);
+		};
+		this.turnOff = this.turnOff.bind(this);
       	this.onSubmit = this.onSubmit.bind(this);
       	this.optionOff = this.optionOff.bind(this);
       	this.optionOn = this.optionOn.bind(this);
       	this.removeMuscle = this.removeMuscle.bind(this);
       	this.back = this.back.bind(this);
-	 }
-
+		
+	}
+	setCurrentMuscles(){
+		var muscles = this.props.muscleData;
+		var list = [];
+		for(var i = 0 ; i < muscles.muscles.length; i ++ ){
+			list.push(muscles.muscles[i].name);
+		}
+		return list;
+	}
 	turnOff(e){
 		e.preventDefault();
 		this.setState({
@@ -84,11 +92,9 @@ class Workout extends React.Component{
 			//Add muscle to database
 			this.props.registerWorkoutInfo(musclename,'muscles', 'none');
 		}
+		
 	}
-	createListElement(muscleName){
-		var capitalName = muscleName.charAt(0).toUpperCase() + muscleName.slice(1);
-		return (<li className="lists"><a  onClick={() => this.addMuscle(muscleName)}>{capitalName}</a></li>);
-	}
+
 	onSubmit(e){
 		e.preventDefault();
 		this.setState({
@@ -96,26 +102,32 @@ class Workout extends React.Component{
 			hideAll: true,
 		})
 	}
- 	render(){
- 		const vis = this.state.visible;
+	createListElement(muscleName){
+			var capitalName = muscleName.charAt(0).toUpperCase() + muscleName.slice(1);
+			return (<li className="lists"><a  onClick={() => this.addMuscle(muscleName)}>{capitalName}</a></li>);
+		}
+	render(){
+		const vis = this.state.visible;
  		const muscles = this.state.muscles;
  		const hideAll = this.state.hideAll;
  		const exerciseOption = this.state.exerciseOption;
  		const optionOn = this.optionOn;
  		const optionOff = this.optionOff;
  		const removeMuscle = this.removeMuscle;
+ 		const muscleData = this.props.muscleData;
+ 		const muscleIndex = this.props.index;
 
  		const hideStyle={
  			display: 'none'
  		}
+ 		
  		const muscleList = (
 	      	<div className = "app">
 	 			<div >
-	 			<a className="lists" onClick={this.turnOff}>&times;</a>
+	 			<a className="root" onClick={this.turnOff}>&times;</a>
 	 			<center>
 	 			<ul>
-				    
-	 				{this.createListElement("abdominals")}
+				    {this.createListElement("abdominals")}
 	 				{this.createListElement("abductors")}
 	 				{this.createListElement("adductors")}
 	 				{this.createListElement("biceps")}
@@ -136,7 +148,6 @@ class Workout extends React.Component{
 				 </div>
 	 		</div>
     	);
-
     	const button = (
     		<div>
     			<div className= "root">
@@ -148,9 +159,8 @@ class Workout extends React.Component{
     		</div>
     	);
     	const muscleDivs=(
-    		
  				muscles.map(function(muscles,i){
- 					return <MuscleList index={i} removeMuscle={removeMuscle} optionOn={optionOn} optionOff={optionOff} muscle={muscles} key={i} />;
+ 					return <MuscleList index={i} removeMuscle={removeMuscle} optionOn={optionOn} optionOff={optionOff} muscle={muscles} muscleIndex={muscleIndex} muscleData={muscleData} key={i} />;
  				})
  		);
  		const muscleDivVis=(
@@ -168,16 +178,20 @@ class Workout extends React.Component{
  				{ vis ? muscleList : button}
  			</div>
  		)
- 		return(
- 			<div>
+
+		return(
+				<div>
  				<button onClick = {this.back} >&larr;</button>
- 				{hideAll ? muscleDivInv : muscleDivVis}
- 				{exerciseOption ? null : options}
- 			</div>
- 		)
- 	}
- }	
-Workout.propTypes = {
+ 					{hideAll ? muscleDivInv : muscleDivVis}
+ 					{exerciseOption ? null : options}
+ 				</div>
+			)
+		}
+	}
+
+Muscle.propTypes = {
 	registerWorkoutInfo: React.PropTypes.func.isRequired
 }
-export default connect(null, { registerWorkoutInfo })(Workout);
+export default connect(null, { registerWorkoutInfo })(Muscle);
+
+

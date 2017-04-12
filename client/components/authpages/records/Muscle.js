@@ -23,6 +23,9 @@ class Muscle extends React.Component{
  			}
  		})
 		muscleTitle = muscleTitle.substring(0, muscleTitle.length-1);
+		if(this.props.index == 0){
+			muscleTitle = muscleTitle + " (Click to Continue)";
+		}
 		return muscleTitle;
 	}
 	arrowClick(e){
