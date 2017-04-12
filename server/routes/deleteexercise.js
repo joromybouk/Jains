@@ -54,8 +54,7 @@ function findProfile(db,res,email,exercisename,muscle){
 				res.status(401);
 				return;
 			}
-			delete infoObject['muscles'][index].exercises[index2].sets;
-			delete infoObject['muscles'][index].exercises[index2].name;	
+			infoObject['muscles'][index].exercises.splice(index2,1);
 			var json = JSON.stringify(infoObject);
 			db.run("UPDATE workouts SET info='"+ json +"' WHERE id=" + id);
 		})

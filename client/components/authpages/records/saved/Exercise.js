@@ -25,8 +25,8 @@ class Exercise extends React.Component{
 
 	setCurrentSet(){
 		var list = [];
-		var data = this.props.workoutData.muscles[this.props.muscleIndex].exercises;
-		if(data && data[this.props.index] && data[this.props.index].sets){
+		var data = this.props.workoutData.muscles[this.props.muscleIndex];
+		if(data && data.exercises && data[this.props.index] && data[this.props.index].sets.exercises){
 			var sets = (this.props.workoutData.muscles[this.props.muscleIndex].exercises[this.props.index].sets);
 			for(var i = 0 ; i < sets.length; i ++ ){
 				list.push(sets[i]);

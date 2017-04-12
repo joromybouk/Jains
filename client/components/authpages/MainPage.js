@@ -10,7 +10,6 @@ class MainPage extends React.Component{
     	super(props);
     	this.state ={
       		data : [],
-      		anyData: false,
       		dates: [],
       		text: '',
       	}
@@ -27,16 +26,14 @@ class MainPage extends React.Component{
 	getPreviousRecords(){
 		this.props.retrieveRecords(15).then(
 			(response)=>{
-				this.setState({text:'', data:response.data.info, dates: response.data.dates, anyData: true })
+				this.setState({text:'No records to show', data:response.data.info, dates: response.data.dates })
 			},
-			(response)=>{this.setState({text:'No records to show', anyData: false})}
+			(response)=>{this.setState({text: ''})}
 		);
 		return "test";
 	}
  	render(){
  		
- 		const anyData = this.state.anyData;
-
  		const findRecordStyle = {
  			marginTop: '150px'
  		}
@@ -44,30 +41,35 @@ class MainPage extends React.Component{
  		const data = this.state.text;
  		const muscleData = this.state.data;
  		const dates = this.state.dates;
-
+ 		var disp = false;
 
  		const noRecords = (
  			<div style= {findRecordStyle}>
 	 			<center>
-	 				{data}
+	 				{this.state.text}
 	 			</center>
  			</div>
  		);
 
- 		const muscleDisp = (
- 			muscleData.map(function(muscleDatae,i){
- 				return <Muscle muscleData={muscleDatae} index={i} date={dates[i]} key={i} />;
- 			})
- 		);
-
+ 		if(muscleData !== undefined){
+ 			if(muscleData.length > 0){
+ 				disp = true;
+ 			}
+ 		}
+ 		var muscleDisp = null;
+ 		if(disp){
+	 		muscleDisp = (
+	 			muscleData.map(function(muscleDatae,i){
+	 				return <Muscle muscleData={muscleDatae} index={i} date={dates[i]} key={i} />;
+	 			})
+	 		);
+	 	}
  		const records = (
  			<div>
 	 			{muscleDisp}
  			</div>
  		);
-
-
-
+2
  		return(
  		<div>
 			<div style={{display: 'inline-block'}}>
@@ -77,7 +79,7 @@ class MainPage extends React.Component{
 			<div style={{display: 'inline-block'}}>
 				<p> Add a workout </p>
  			</div>
- 			{anyData ? records : noRecords}
+ 			{disp ? records : noRecords}
 		</div>
  		)
  	}

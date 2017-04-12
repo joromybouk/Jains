@@ -28,14 +28,20 @@ function findProfile(db,res,email,numRecords){
 				var str = row[i].info;
 				var date = row[i].date;
 				var infoObject = JSON.parse(str);
-				responseObj.push(infoObject);
-				responseDates.push(date);
+				if(JSON.stringify(str).length <= 20){
+					console.log("im here");
+					db.run("DELETE from workouts where id is " + id);
+				}else{
+					responseObj.push(infoObject);
+					responseDates.push(date);
+				}
+				
 
 			}	
 			if(row.length == 0){
 				//no records
 				console.log("No records found");
-				res.status(404).json();
+				res.status(204).json();
 			}
 			else{
 				//return records 

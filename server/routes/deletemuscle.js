@@ -38,8 +38,8 @@ function findProfile(db,res,email,muscle){
 				res.status(401);
 				return;
 			}
-			delete infoObject['muscles'][index].exercises;
-			delete infoObject['muscles'][index].name;	
+
+			infoObject['muscles'].splice(index,1);	
 			console.log("delete muscle data from database");
 			var json = JSON.stringify(infoObject);
 			db.run("UPDATE workouts SET info='"+ json +"' WHERE id=" + id);
