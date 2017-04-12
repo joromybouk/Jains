@@ -13,16 +13,62 @@ class Workout extends React.Component{
     	this.state ={
     		muscles : [],
       		visible : false,
+      		hideAll : false,
+      		exerciseOption: false,
       	}
       	this.turnOff = this.turnOff.bind(this);
       	this.onSubmit = this.onSubmit.bind(this);
+      	this.optionOff = this.optionOff.bind(this);
+      	this.optionOn = this.optionOn.bind(this);
+      	this.removeMuscle = this.removeMuscle.bind(this);
+      	this.back = this.back.bind(this);
 	 }
 
 	turnOff(e){
 		e.preventDefault();
 		this.setState({
-			visible: false
+			visible: false,
+			hideAll : false,
 		})
+	}
+	optionOn(){
+		this.setState({
+			exerciseOption: false,
+		})
+	}
+	back(){
+		browserHistory.push("/mainpage");
+	}
+	optionOff(){
+		this.setState({
+			exerciseOption: true,
+		})
+
+	}
+	removeMuscle(index){
+		var muscles = this.state.muscles;
+		if (index > -1) {
+    		muscles.splice(index, 1);
+		}
+		this.setState({
+			muscles: muscles,
+		})
+	}
+	selectExercise(exerciseName){
+		var exercises = (this.state.exercises);
+		if(!(exercises.indexOf(exerciseName) > -1)){
+			exercises.push(exerciseName);
+			this.setState({
+				visible: false,
+				exercises: exercises
+			})
+			//Add exercise to database
+			
+			this.props.registerWorkoutInfo(exerciseName,'exercises',this.props.muscle);
+		}
+		else{
+			console.log("Exercise already exists");
+		}
 	}
 
 	addMuscle(musclename){
@@ -32,6 +78,7 @@ class Workout extends React.Component{
 			muscles.push(musclename);
 			this.setState({
 				visible: false,
+				hideAll: false,
 				muscles: muscles
 			})
 			//Add muscle to database
@@ -43,27 +90,39 @@ class Workout extends React.Component{
 	onSubmit(e){
 		e.preventDefault();
 		this.setState({
-			visible: true
+			visible: true,
+			hideAll: true,
 		})
 	}
  	render(){
  		const vis = this.state.visible;
  		const muscles = this.state.muscles;
+ 		const hideAll = this.state.hideAll;
+ 		const exerciseOption = this.state.exerciseOption;
+ 		const optionOn = this.optionOn;
+ 		const optionOff = this.optionOff;
+ 		const removeMuscle = this.removeMuscle;
+
+ 		const hideStyle={
+ 			display: 'none'
+ 		}
  		const muscleList = (
 	      	<div className = "app">
-	 			
-	 			<div className="root">
+	 			<div >
 	 			<a className="root" onClick={this.turnOff}>&times;</a>
+	 			<center>
 	 			<ul>
-				    <li><a onClick={() => this.addMuscle("abdominals")}>abdominals</a></li>
-				    <li><a onClick={() => this.addMuscle("chest")}>chest</a></li>
-				    <li><a onClick={() => this.addMuscle("back")}>back</a></li>
-				    <li><a onClick={() => this.addMuscle("biceps")}>biceps</a></li>
+				    <li className="lists"><a  onClick={() => this.addMuscle("abdominals")}>Abdominals</a></li>
+				    <li className="lists"><a onClick={() => this.addMuscle("chest")}>Chest</a></li>
+				    <li className="lists"><a onClick={() => this.addMuscle("lats")}>Lats</a></li>
+				    <li className="lists"><a onClick={() => this.addMuscle("biceps")}>Biceps</a></li>
 				 </ul>
+				 </center>
 				 </div>
 	 		</div>
     	);
-    	const empty = (
+
+    	const button = (
     		<div>
     			<div className= "root">
 	 				<button onClick = {this.onSubmit} >+</button>
@@ -73,16 +132,33 @@ class Workout extends React.Component{
 	 			</div>
     		</div>
     	);
-
+    	const muscleDivs=(
+    		
+ 				muscles.map(function(muscles,i){
+ 					return <MuscleList index={i} removeMuscle={removeMuscle} optionOn={optionOn} optionOff={optionOff} muscle={muscles} key={i} />;
+ 				})
+ 		);
+ 		const muscleDivVis=(
+ 			<div>
+ 				{muscleDivs}
+ 			</div>
+ 		);
+ 		const muscleDivInv=(
+ 			<div style={hideStyle}>
+ 				{muscleDivs}
+ 			</div>
+ 		);
+ 		const options = (
+ 			<div>
+ 				{ vis ? muscleList : button}
+ 			</div>
+ 		)
  		return(
  			<div>
- 			{
- 				muscles.map(function(muscles,i){
- 					return <MuscleList muscle={muscles} key={i} />;
- 				})
- 			}
- 			{ vis ? muscleList : empty}
- 		</div>
+ 				<button onClick = {this.back} >&larr;</button>
+ 				{hideAll ? muscleDivInv : muscleDivVis}
+ 				{exerciseOption ? null : options}
+ 			</div>
  		)
  	}
  }	

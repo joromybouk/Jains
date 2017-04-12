@@ -13,6 +13,10 @@ import workouts from './routes/workouts';
 import muscles from './routes/muscles';
 import exercises from './routes/exercises';
 import set from './routes/set';
+import records from './routes/records';
+import deleteset from './routes/deleteset';
+import deleteexercise from './routes/deleteexercise';
+import deletemuscle from './routes/deletemuscle';
 
 let app = express();
 
@@ -24,7 +28,10 @@ app.use('/api/workouts', workouts);
 app.use('/api/muscles', muscles);
 app.use('/api/exercises', exercises);
 app.use('/api/set', set);
-
+app.use('/api/records', records);
+app.use('/api/deleteset', deleteset);
+app.use('/api/deleteexercise', deleteexercise);
+app.use('/api/deletemuscle',deletemuscle);
 
 const compiler = webpack(webpackConfig);
 

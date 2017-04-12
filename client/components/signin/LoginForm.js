@@ -52,8 +52,6 @@ class LoginForm extends React.Component{
 		const { errors } = this.state;
 		return(
 			<form onSubmit = {this.onSubmit}>
-				<h1>Log back in!</h1>
-				
 				<TextField 
 				error={errors.email}
 				label="Email"

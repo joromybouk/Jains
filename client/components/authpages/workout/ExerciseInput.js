@@ -26,10 +26,9 @@ class ExerciseInput extends React.Component{
 	 }
 	 onSubmit(e){
 	 	e.preventDefault();
-	 	this.props.hideInput();
+	 	this.props.hideInput(this.state);
 	 	this.props.registerSet(this.state,this.props.grand,this.props.parent);
 	 }
-
 
 	render(){
 		var units = ["kg","lbs"];

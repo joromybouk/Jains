@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import WorkoutPage from './exercisepage/WorkoutPage';
-import ExerciseInput from './ExerciseInput';
+
 import Exercise from './Exercise';
-import { registerWorkoutInfo } from '../../../actions/workoutActions';
+import { registerWorkoutInfo, deleteMusle } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
 require('./styles.css');
 
@@ -15,81 +15,104 @@ class MuscleList extends React.Component{
 			name: '',
 			exercises: [],
 			visible: false,
-			newInput: false,
+			hideAll : false,
 			current:'',
+			showBin: false,
 			
 		};
 		this.turnOff = this.turnOff.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
-		this.selectExercise = this.selectExercise.bind(this);
-		this.showInput = this.showInput.bind(this);
-		this.hideInput = this.hideInput.bind(this);
+		this.selectExercise = this.selectExercise.bind(this);	
+		this.removeExercise = this.removeExercise.bind(this);	
+		this.textClicked = this.textClicked.bind(this);	
+		this.deleteEntry = this.deleteEntry.bind(this);	
 	}
 	turnOff(e){
 		e.preventDefault();
 		this.setState({
-			visible: false
+			visible: false,
+			hideAll: false,
 		})
+		this.props.optionOn();
 	}
-	showInput(exerciseName){
-		this.setState({
-			newInput: true,
-			current: exerciseName
-		})
-	}
-	hideInput(){
-		this.setState({
-			newInput: false
-		})
-		
-	}
+	
 	onSubmit(e){
 		e.preventDefault();
 		this.setState({
-			visible: true
+			visible: true,
+			hideAll : true,
 		})
+		this.props.optionOff();
 	}
-	
 	selectExercise(exerciseName){
 		var exercises = (this.state.exercises);
 		if(!(exercises.indexOf(exerciseName) > -1)){
-			exercises.push(exerciseName);
+
+			exercises = exercises.concat([exerciseName]);
 			this.setState({
 				visible: false,
+				hideAll: false,
 				exercises: exercises
 			})
 			//Add exercise to database
-			
+			this.props.optionOn();
 			this.props.registerWorkoutInfo(exerciseName,'exercises',this.props.muscle);
 		}
 		else{
 			console.log("Exercise already exists");
 		}
 	}
+	textClicked(e){
+		e.preventDefault();
+		var binState = this.state.showBin;
+		binState = !binState;
+		this.setState({
+			showBin : binState,	
+		})
+	}
+	deleteEntry(e){
+		e.preventDefault();
+		this.props.removeMuscle(this.props.index);
+		this.props.deleteMusle(this.props.muscle);
+	}
+
+	removeExercise(index){
+
+		var exercises = this.state.exercises;
+		if (index > -1) {
+    		exercises.splice(index, 1);
+		}
+		this.setState({
+			exercises: exercises,
+		})
+	}
 
 	render(){
 		const style = {
 		   borderBottomStyle: 'solid',
 		}
+		const hideStyle = {
+			display: 'none',
+		}
 
 		const name = this.props.muscle;
 		const vis = this.state.visible;
-		const visInput = this.state.newInput;
+		const visInput = this.state.visible;
 		const exercises = this.state.exercises;
 		const showInputFunc = this.showInput; 
+		const hideBool = this.state.hideAll;
+		const removeExercise = this.removeExercise;
+		var styleToChoose; 
 
-		const none = (
-			<div> </div>
-		);
-		const exercise_input = (
-			<div>
-				<ExerciseInput parent={this.state.current} grand={this.props.muscle} hideInput={this.hideInput}/>
-			</div>
-			
-		);
+		const showBin = this.state.showBin;
+		const bin = (<h1 onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</h1>);
+
+		if(hideBool){
+			styleToChoose = hideStyle;
+		}
 		const exerciseDisp = (
  				exercises.map(function(exercises,i){
- 					return <Exercise exercise={exercises} showInput={showInputFunc} key={i} />;
+ 					return <Exercise exercise={exercises} removeExercise={removeExercise} index={i} muscle={name} key={i} />;
  				})
 		);
 		const exercliseList = (
@@ -98,7 +121,7 @@ class MuscleList extends React.Component{
 	 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
 	 		</div>
     	);
-		const empty = (
+		const addEx = (
 			<div>
 				<div className= "root">
 	 				<button onClick = {this.onSubmit} >+</button>
@@ -110,18 +133,27 @@ class MuscleList extends React.Component{
 		);
 		return(
 			<div style={style}>
-				<h1>{name}</h1>	
-				{ exerciseDisp }
-				{ visInput ? exercise_input : none}
-				{ vis ? exercliseList : empty}
+				<div style={styleToChoose}>
+					<div className="root">
+						<h1 onClick={this.textClicked}>{name}</h1>
+					</div>
+					<div className="root">
+						{showBin ? bin : null}
+					</div>
+					{ exerciseDisp }
+				</div>
+				<div>
+					{ vis ? exercliseList : addEx}
+				</div>
 			</div>
 			)
 		}
 	}
 
 MuscleList.propTypes = {
-	registerWorkoutInfo: React.PropTypes.func.isRequired
+	registerWorkoutInfo: React.PropTypes.func.isRequired,
+	deleteMusle: React.PropTypes.func.isRequired,
 }
-export default connect(null, { registerWorkoutInfo })(MuscleList);
+export default connect(null, { registerWorkoutInfo, deleteMusle})(MuscleList);
 
 

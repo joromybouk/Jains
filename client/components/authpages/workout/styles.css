@@ -1,1 +1,23 @@
 .root {display :inline-block;}
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.muscleborder{
+	border-bottom-style: solid;
+
+}
+
+.titleborder{
+	border-top-style: solid;
+}
+
+.lists{
+	list-style-type: none;
+	margin : auto;
+	font-size: 2em;
+}

@@ -8,11 +8,6 @@
         "advanced kettlebell windmill",
         "air bike",
         "alternate heel touchers",
-        "ab crunch machine",
-        "ab roller",
-        "advanced kettlebell windmill",
-        "air bike",
-        "alternate heel touchers",
         "barbell ab rollout",
         "barbell ab rollout - on knees",
         "barbell rollout from bench",
@@ -106,8 +101,6 @@
       "workout": [
         "adductor",
         "adductor/groin",
-        "adductor",
-        "adductor/groin",
         "band hip adductions",
         "carioca quick step",
         "groin and back stretch",
@@ -125,7 +118,6 @@
       "name": "quadriceps",
       "workout": [
         "all fours quad stretch",
-        "alternate leg diagonal bound",
         "alternate leg diagonal bound",
         "backward drag",
         "barbell full squat",
@@ -280,8 +272,6 @@
       "workout": [
         "alternate hammer curl",
         "alternate incline dumbbell curl",
-        "alternate hammer curl",
-        "alternate incline dumbbell curl",
         "barbell curl",
         "barbell curls lying against an incline",
         "brachialis-smr",
@@ -338,12 +328,6 @@
     {
       "name": "shoulders",
       "workout": [
-        "alternating cable shoulder press",
-        "alternating deltoid raise",
-        "alternating kettlebell press",
-        "anti-gravity press",
-        "arm circles",
-        "arnold dumbbell press",
         "alternating cable shoulder press",
         "alternating deltoid raise",
         "alternating kettlebell press",
@@ -478,8 +462,6 @@
       "workout": [
         "alternating floor press",
         "around the worlds",
-        "alternating floor press",
-        "around the worlds",
         "barbell bench press - medium grip",
         "barbell guillotine bench press",
         "barbell incline bench press - medium grip",
@@ -567,7 +549,6 @@
       "name": "hamstrings",
       "workout": [
         "alternating hang clean",
-        "alternating hang clean",
         "ball leg curl",
         "band good morning",
         "band good morning (pull through)",
@@ -651,8 +632,6 @@
       "workout": [
         "alternating kettlebell row",
         "alternating renegade row",
-        "alternating kettlebell row",
-        "alternating renegade row",
         "bent over barbell row",
         "bent over one-arm long bar row",
         "bent over two-arm long bar row",
@@ -692,8 +671,6 @@
       "workout": [
         "ankle circles",
         "anterior tibialis-smr",
-        "ankle circles",
-        "anterior tibialis-smr",
         "balance board",
         "barbell seated calf raise",
         "calf press",
@@ -726,7 +703,6 @@
       "name": "glutes",
       "workout": [
         "ankle on the knee",
-        "ankle on the knee",
         "barbell glute bridge",
         "barbell hip thrust",
         "butt lift (bridge)",
@@ -753,9 +729,6 @@
     {
       "name": "lower back",
       "workout": [
-        "atlas stone trainer",
-        "atlas stones",
-        "axle deadlift",
         "atlas stone trainer",
         "atlas stones",
         "axle deadlift",

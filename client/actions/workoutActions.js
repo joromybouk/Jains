@@ -36,3 +36,47 @@ export function registerSet(setState, grandParent, parent){
 		return axios.post('./api/set' ,toSend);
 	}
 }
+export function retrieveRecords(numRecords){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		email: email,
+		num : numRecords,
+	}
+	return dispatch => {
+		return axios.post('./api/records',toSend);
+	}
+}
+export function deleteSet(set, grandParent, parent){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		set: set,
+		email: email,
+		parent: parent,
+		grandParent: grandParent,
+	}
+	return dispatch => {
+		return axios.post('./api/deleteset' ,toSend);
+	}
+}
+export function deleteExercise(exercise,parent){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		email: email,
+		exercise: exercise,
+		muscle: parent,
+	}
+	return dispatch => {
+		return axios.post('./api/deleteexercise' ,toSend);
+	}
+}
+export function deleteMusle(muscle){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		email: email,
+		muscle: muscle,
+	}
+	return dispatch => {
+		return axios.post('./api/deletemuscle' ,toSend);
+	}
+}
+
