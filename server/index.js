@@ -20,6 +20,7 @@ import deletemuscle from './routes/deletemuscle';
 import addweight from './routes/addweight';
 import getweight from './routes/getweight';
 import removeweight from './routes/removeweight';
+import changepass from './routes/changepass';
 import deleteworkout from './routes/deleteworkout';
 let app = express();
 
@@ -39,6 +40,7 @@ app.use('/api/addweight',addweight);
 app.use('/api/getweight',getweight);
 app.use('/api/removeweight',removeweight);
 app.use('/api/deleteworkout',deleteworkout);
+app.use('/api/changepass',changepass);
 
 const compiler = webpack(webpackConfig);
 

@@ -3,6 +3,7 @@ import setAuthToken from '../utils/setAuthToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER } from './types';
 import { browserHistory } from 'react-router';
+import jwtDecode from 'jwt-decode';
 
 export function setCurrentUser(user){
 	return {
@@ -28,3 +29,18 @@ export function login(userData){
 		});
 	}
 }
+
+export function changePass(userData){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		email: email,
+		user: userData,
+	}
+	return dispatch => {
+		return axios.post('./api/changepass',toSend);
+	}
+}
+
+
+
+
