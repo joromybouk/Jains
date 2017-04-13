@@ -37,7 +37,7 @@ function checkEmail(db,res,errors,email,password,newpassword,confirmnewpassword)
 				if(bcrypt.compareSync(password,row[0].password)){
 					//change password
 					console.log("wag1");
-					var pass = req.body.newpassword + "";
+					var pass = newpassword + "";
 					const password_hashed = bcrypt.hashSync(pass,10);
 					db.run("UPDATE users set password = '" + password_hashed  +"' where email is '" + email + "'");
 					res.json({

@@ -14,8 +14,9 @@ class SettingsMain extends React.Component{
     	this.state ={
       		password : '',
       		newpassword : '',
-      		confirmnewpassword:'',
+      		confirmnewpassword :'',
       		errors: {},
+      		text:'',
       		isLoading : false
 
       	}
@@ -25,6 +26,7 @@ class SettingsMain extends React.Component{
 	onChange(e){
 	 	//when a text field is modified, update the state
 	 	this.setState({
+	 		text : '',
 	 		[e.target.name] : [e.target.value]
 	 	})
 	 }
@@ -46,6 +48,13 @@ class SettingsMain extends React.Component{
 		 	//if there isn't, the client will be redirected to main page
 		 	this.props.changePass(this.state).then(
 		 		() => {
+		 			this.setState({errors : {}, 
+		 				isLoading: false, 
+		 				password:'',
+		 				newpassword:'',
+		 				confirmnewpassword:'',
+		 				text: 'Password succesfuly changed',
+		 			});
 		 			console.log("Password succesfuly changed");
 		 		},
 		 		({response})=>{this.setState({errors:response.data, isLoading: false})}
@@ -84,7 +93,10 @@ class SettingsMain extends React.Component{
 				value={this.state.confirmnewpassword}
 				field="confirmnewpassword"
 				type="password"
-				/>
+				/>	
+				<center>
+					<p>{this.state.text}</p>
+				</center>
 				
 				<div className="form-group">
 				<button
