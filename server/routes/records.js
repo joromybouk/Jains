@@ -35,8 +35,6 @@ function findProfile(db,res,email,numRecords){
 					responseObj.push(infoObject);
 					responseDates.push(date);
 				}
-				
-
 			}	
 			if(row.length == 0){
 				//no records

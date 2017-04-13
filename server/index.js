@@ -17,10 +17,13 @@ import records from './routes/records';
 import deleteset from './routes/deleteset';
 import deleteexercise from './routes/deleteexercise';
 import deletemuscle from './routes/deletemuscle';
-
+import addweight from './routes/addweight';
+import getweight from './routes/getweight';
+import removeweight from './routes/removeweight';
+import deleteworkout from './routes/deleteworkout';
 let app = express();
 
-	app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 app.use('/api/users', users);
 app.use('/api/auth', auth);
@@ -32,6 +35,10 @@ app.use('/api/records', records);
 app.use('/api/deleteset', deleteset);
 app.use('/api/deleteexercise', deleteexercise);
 app.use('/api/deletemuscle',deletemuscle);
+app.use('/api/addweight',addweight);
+app.use('/api/getweight',getweight);
+app.use('/api/removeweight',removeweight);
+app.use('/api/deleteworkout',deleteworkout);
 
 const compiler = webpack(webpackConfig);
 

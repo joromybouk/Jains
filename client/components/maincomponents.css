@@ -1,0 +1,45 @@
+/*.navbar{
+	background: #f3f3f3;
+	height: 2.0em;
+
+}*/
+.navbar {
+	width: 100%;
+}
+.navbar ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+.navbar li:last-child {
+    border-right: none;
+    background: red;
+    float: right;
+
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0.4em 0.6em;
+    text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+    background-color: #111;
+
+}
+
+.active {
+    background-color: #4CAF50;
+}

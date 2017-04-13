@@ -21,10 +21,9 @@ ExerciseInputField.propTypes = {
 	field: React.PropTypes.string.isRequired,
 	label: React.PropTypes.string.isRequired,
 	onChange: React.PropTypes.func.isRequired,
-
 }
 ExerciseInputField.defaultProps = {
-	type: 'number'
+	type: 'text'
 }
 
 export default ExerciseInputField;

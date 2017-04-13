@@ -79,4 +79,14 @@ export function deleteMusle(muscle){
 		return axios.post('./api/deletemuscle' ,toSend);
 	}
 }
+export function removeWorkout(index){
+	var email = (jwtDecode(localStorage.jwtToken).email);
+	const toSend = {
+		email: email,
+		index: index,
+	}
+	return dispatch => {
+		return axios.post('./api/deleteworkout' ,toSend);
+	}
+}
 

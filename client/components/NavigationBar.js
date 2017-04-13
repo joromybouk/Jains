@@ -2,42 +2,57 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authAction';
+import { browserHistory } from 'react-router';
+require('./maincomponents.css')
+
 
 class NavigationBar extends React.Component {
   logout(e){
     e.preventDefault();
     this.props.logout();
   }
-	render(){
-    const { isAuthenticated } = this.props.auth;
 
+  onSubmit(name){
+    browserHistory.push("/"+ name);
+  } 
+
+  render(){
+    const { isAuthenticated } = this.props.auth;
+    const floater={
+      float: 'right',
+    }
     const userLinks = (
-      <ul className = "nav navbar-nav navbar-right">
-        <li> <Link to = "/mainpage" className = "navbar-brand">Main</Link></li>
-        <li> <Link to = "/" onClick={this.logout.bind(this)} className = "navbar-brand">Logout</Link></li>
-      </ul>
+      <div className="navbar">
+        <ul>
+          <li><a onClick={()=>this.onSubmit("mainpage")}>Workouts</a></li>
+          <li><a onClick={()=>this.onSubmit("weight")}>Weights</a></li>
+          <li><a onClick={()=>this.onSubmit("settings")}>Settings</a></li>
+          <li><a style={floater} onClick={this.logout.bind(this)}>Logout</a></li>
+        </ul>
+      </div>
     );
     const guestLinks = (
-      <ul className = "nav navbar-nav navbar-right">
-        <li> <Link to = "/" className = "navbar-brand">Sign In</Link> </li>
-        <li> <Link to = "/register" className = "navbar-brand">Register</Link></li>
+      <ul>
+        <li><a onClick={()=>this.onSubmit("")}>Sign In</a></li>
+         <li><a onClick={()=>this.onSubmit("register")}>Register</a></li>
+         <li></li>
       </ul>
     );
 
-		return (
-			<nav className="navbar navbar-default">
-        	<div className="container-fluid">
-            <div className="navbar-header">
-                <div className = "collapse navbar-collapse">
+    return (
+          <div className = "navbar">
+            <div>
+              <center>
+                <div>
                   { isAuthenticated ? userLinks : guestLinks}
                 </div>
+              </center>
 
             </div>
           </div>
-     	  </nav>
 
-		);
-	}  
+    );
+  }  
 }
 
 NavigationBar.propTypes={

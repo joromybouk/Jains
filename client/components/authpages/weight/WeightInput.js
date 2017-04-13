@@ -12,6 +12,7 @@ class WeightInput extends React.Component{
 		this.state={
 			weight: '',
 			unit: '',
+			text: '',
 		}
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -20,9 +21,21 @@ class WeightInput extends React.Component{
 	}
 	onChange(e){
 	 	//when a text field is modified, update the state
-	 	this.setState({
-	 		[e.target.name] : [e.target.value]
-	 	})
+	 	const check = ["0","1","2","3","4","5","6","7","8","9","."];
+	 	if(e.target.name === 'weight'){
+	 		var val = e.target.value;
+	 		var enteredChar = val.charAt(val.length-1)
+	 		if(check.indexOf(enteredChar) > -1 || val.length === 0){
+	 			this.setState({
+		 			[e.target.name] : [e.target.value]
+		 		})
+	 		}
+	 	}
+	 	else{
+		 	this.setState({
+		 		[e.target.name] : [e.target.value]
+		 	})
+	 	}
 	 }
 
 	getDate(){
@@ -55,25 +68,33 @@ class WeightInput extends React.Component{
 
 	}
 	onSubmit(e){
-		e.preventDefault();
-		var time = this.getTime();
-		var date = this.getDate();
-		var newWeight = {
-			weight: this.state.weight[0],
-			unit: this.state.unit[0],
-			date: date,
-			time: time,
-		}
-		
-		this.props.newWeightAdded(newWeight);
+		if(this.state.weight[0] && this.state.unit[0]){
+			e.preventDefault();
+			var time = this.getTime();
+			var date = this.getDate();
+			var newWeight = {
+				weight: this.state.weight[0],
+				unit: this.state.unit[0],
+				date: date,
+				time: time,
+			}
+			
+			this.props.newWeightAdded(newWeight);
 
-		this.setState({
-			weight:'',
-			unit:'',
-		})
+			this.setState({
+				weight:'',
+				unit:'',
+				text:'',
+			})
+		}
+		else{
+			this.setState({
+				text:'All fields must be complete',
+			})
+		}
 	}
 	render(){
-		var units = ["kg","lbs"];
+		var units = ["kg","lbs","stone"];
 		const options = map(units, (val, key) =>
       		<option key={key} value={val}>{val}</option>
     	);
@@ -86,7 +107,7 @@ class WeightInput extends React.Component{
 						onChange={this.onChange}
 						value={this.state.weight}
 						field="weight"
-						type ="number"
+						type ="text"
 						/>
 					</div>
 					<div className = "root">
@@ -103,6 +124,9 @@ class WeightInput extends React.Component{
 			        <div className = "root">
 					    <p onClick={this.onSubmit}> &emsp;&emsp; &#10003; </p>
 				    </div>
+				    <center>
+				    	<p className="red">{this.state.text} </p>
+				    </center>
 				</div>
 		);
 	}

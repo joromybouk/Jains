@@ -20,9 +20,21 @@ class ExerciseInput extends React.Component{
 	}
 	onChange(e){
 	 	//when a text field is modified, update the state
-	 	this.setState({
-	 		[e.target.name] : [e.target.value]
-	 	})
+	 	const check = ["0","1","2","3","4","5","6","7","8","9","."];
+	 	if(e.target.name === 'weight'){
+	 		var val = e.target.value;
+	 		var enteredChar = val.charAt(val.length-1)
+	 		if(check.indexOf(enteredChar) > -1 || val.length === 0){
+	 			this.setState({
+		 			[e.target.name] : [e.target.value]
+		 		})
+	 		}
+	 	}
+	 	else{
+		 	this.setState({
+		 		[e.target.name] : [e.target.value]
+		 	})
+	 	}
 	 }
 	 onSubmit(e){
 	 	e.preventDefault();
@@ -37,21 +49,14 @@ class ExerciseInput extends React.Component{
     	);
 		return(	<div>
 
-					<ExerciseInputField 
-					label="reps"
-					onChange={this.onChange}
-					value={this.state.reps}
-					field="reps"
-					type ="number"
-					/>
+					
 					<ExerciseInputField 
 					label="weight"
 					onChange={this.onChange}
 					value={this.state.weight}
 					field="weight"
-					type ="number"
+					type ="text"
 					/>
-					<div>
 			          <label>unit</label>
 			          <select
 			            name="unit"
@@ -61,7 +66,13 @@ class ExerciseInput extends React.Component{
 			            <option value="" disabled></option>
 			            {options}
 			          </select>
-			        </div>
+			        <ExerciseInputField 
+					label="reps"
+					onChange={this.onChange}
+					value={this.state.reps}
+					field="reps"
+					type ="number"
+					/>
 
 
 			    <p onClick={this.onSubmit}> &#10003; </p>

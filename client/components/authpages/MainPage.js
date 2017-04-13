@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Muscle from './records/Muscle';
 import { Link } from 'react-router';
-import { registerNewWorkout, retrieveRecords } from '../../actions/workoutActions';
+import { registerNewWorkout, retrieveRecords, removeWorkout } from '../../actions/workoutActions';
 
 class MainPage extends React.Component{
 	constructor(props){
@@ -14,6 +14,7 @@ class MainPage extends React.Component{
       		text: '',
       	}
       	this.onSubmit = this.onSubmit.bind(this);
+      	this.removeRecord = this.removeRecord.bind(this);
       	this.getPreviousRecords();
 	 }
 
@@ -23,10 +24,32 @@ class MainPage extends React.Component{
 		this.props.registerNewWorkout();
 	}	
 
+	removeRecord(index){
+
+		var data = this.state.data;
+		var dates = this.state.dates;
+
+		if (index > -1) {
+    		data.splice(index, 1);
+    		dates.splice(index, 1);
+		}
+		var text = '';
+		if(data.length == 0){
+			text = 'Start tracking your workouts!';
+		}
+		this.setState({
+			data: data,
+			dates:dates,
+			text: text,
+		})
+		this.props.removeWorkout(index);
+
+	}
+
 	getPreviousRecords(){
 		this.props.retrieveRecords(15).then(
 			(response)=>{
-				this.setState({text:'No records to show', data:response.data.info, dates: response.data.dates })
+				this.setState({text:'Start tracking your workouts!', data:response.data.info, dates: response.data.dates })
 			},
 			(response)=>{this.setState({text: ''})}
 		);
@@ -41,6 +64,7 @@ class MainPage extends React.Component{
  		const data = this.state.text;
  		const muscleData = this.state.data;
  		const dates = this.state.dates;
+ 		const removeRecord = this.removeRecord;
  		var disp = false;
 
  		const noRecords = (
@@ -60,7 +84,7 @@ class MainPage extends React.Component{
  		if(disp){
 	 		muscleDisp = (
 	 			muscleData.map(function(muscleDatae,i){
-	 				return <Muscle muscleData={muscleDatae} index={i} date={dates[i]} key={i} />;
+	 				return <Muscle muscleData={muscleDatae} removeRecord={removeRecord} index={i} date={dates[i]} key={i} />;
 	 			})
 	 		);
 	 	}
@@ -69,9 +93,12 @@ class MainPage extends React.Component{
 	 			{muscleDisp}
  			</div>
  		);
-2
+
  		return(
  		<div>
+ 			<center>
+ 			<h1>Workout Records</h1>
+ 			</center>
 			<div style={{display: 'inline-block'}}>
  				<button onClick = {this.onSubmit} >+</button>
 			</div>
@@ -88,6 +115,7 @@ class MainPage extends React.Component{
 MainPage.propTypes = {
 	registerNewWorkout: React.PropTypes.func.isRequired,
 	retrieveRecords: React.PropTypes.func.isRequired,
+	removeWorkout: React.PropTypes.func.isRequired,
 }
 
-export default connect(null, { registerNewWorkout, retrieveRecords })(MainPage);
+export default connect(null, { registerNewWorkout, retrieveRecords, removeWorkout })(MainPage);

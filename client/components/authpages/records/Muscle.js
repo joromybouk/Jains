@@ -6,15 +6,29 @@ import { connect } from 'react-redux';
 require('../workout/styles.css');
 
 class Muscle extends React.Component{
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state= {
 			show: false,
+			showBin: false,
 		};
+		this.onSubmit = this.onSubmit.bind(this);
 		this.arrowClick = this.arrowClick.bind(this);
 		this.continue = this.continue.bind(this);
+		this.deleteEntry = this.deleteEntry.bind(this);
 	}
-
+	onSubmit(e){
+		e.preventDefault();
+		var current = this.state.showBin;
+		current = !current;
+		this.setState({
+			showBin : current,
+		})
+	}
+	deleteEntry(e){
+		e.preventDefault();
+		this.props.removeRecord(this.props.index);
+	}
 	workoutTitle(muscleGroup){
 		var muscleTitle = '';
 		muscleGroup.map(function(muscle,i){
@@ -33,7 +47,8 @@ class Muscle extends React.Component{
 		var state = this.state.show;
 		state = !state;
 		this.setState({
-			show : state
+			show : state,
+			showBin: false,
 		})
 	}
 	continue(e){
@@ -51,6 +66,8 @@ class Muscle extends React.Component{
 		const show = this.state.show;
 		const title = this.workoutTitle(muscleGroup);
 		const date = this.props.date;
+		const showBin = this.state.showBin;
+		const bin = (<h1 className="alignright" onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</h1>);
 
 		const arrowDown = (
 			<p className = "alignright" onClick={this.arrowClick}> &#x25BE; </p>
@@ -62,9 +79,11 @@ class Muscle extends React.Component{
 
 		const titleDisp = (
 			<div className="titleborder">
+
 					<p onClick={this.continue} className = "alignleft">{title}</p>
 					{show ? arrowUp : arrowDown }
 					<p className = "alignright" onClick={this.arrowClick}> {date} </p>
+					
 			</div>
 		);
 
@@ -83,9 +102,10 @@ class Muscle extends React.Component{
 		return(
 			<div className = "container">
 				{titleDisp}
-				<div className>
+				<div onClick={this.onSubmit}>
 				{ show ? muscleDispDiv : null  }
 				</div>
+				{showBin ? bin : null}
 			</div>
 			)
 		}

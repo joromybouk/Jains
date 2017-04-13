@@ -26,8 +26,9 @@ class Exercise extends React.Component{
 	setCurrentSet(){
 		var list = [];
 		var data = this.props.workoutData.muscles[this.props.muscleIndex];
-		if(data && data.exercises && data[this.props.index] && data[this.props.index].sets.exercises){
-			var sets = (this.props.workoutData.muscles[this.props.muscleIndex].exercises[this.props.index].sets);
+	
+		if(data && data.exercises && data.exercises[this.props.index]){
+			var sets = data.exercises[this.props.index].sets;
 			for(var i = 0 ; i < sets.length; i ++ ){
 				list.push(sets[i]);
 			}
@@ -80,7 +81,7 @@ class Exercise extends React.Component{
 		const grandPar = this.props.muscle;
 		const sets = this.state.sets;
 		const removeSet = this.removeSet;
-
+		console.log("Sets = " + sets);
 		const style = {
 			backgroundColor : 'Transparent',
 			border : 'none',
