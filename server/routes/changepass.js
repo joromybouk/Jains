@@ -1,7 +1,7 @@
 import express from 'express';
 import Validator from 'validator';
 import validateInput from '../shared/validation/validatePassChange';	
-import bcrypt from 'bcrypt';
+var bcrypt = require('bcrypt');
 import jwt from 'jsonwebtoken';
 import config from '../config';
 
