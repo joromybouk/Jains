@@ -1,7 +1,7 @@
 import express from 'express';
 import Validator from 'validator';
 import validateInput from '../shared/validation/validateSignup';	
-import bcrypt from 'bcrypt';
+var bcrypt = require('bcrypt');
 let router = express.Router();
 
 
