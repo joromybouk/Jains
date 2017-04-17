@@ -1,4 +1,4 @@
-import Validator from 'Validator';
+var validator = require('validator');
 import isEmpty from 'lodash/isEmpty';
 
 export default function validateInput(data){
@@ -6,22 +6,22 @@ export default function validateInput(data){
 
 
 
-	if(Validator.isEmpty(data.password + "" )){
+	if(validator.isEmpty(data.password + "" )){
 		errors.password = 'This field is required';
 	}
 	
 
-	if(Validator.isEmpty(data.newpassword + "" )){
+	if(validator.isEmpty(data.newpassword + "" )){
 		errors.newpassword = 'This field is required';
 	}
 	if( (data.newpassword + "" ).length < 6 ){
 		errors.newpassword = 'Password must be at least 6 characters';
 	}
 	
-	if(!Validator.equals(data.newpassword+ "" ,data.confirmnewpassword+ "" )){
+	if(!validator.equals(data.newpassword+ "" ,data.confirmnewpassword+ "" )){
 		errors.confirmnewpassword = "Passwords must match";
 	}
-	if(Validator.isEmpty(data.confirmnewpassword + "" )){
+	if(validator.isEmpty(data.confirmnewpassword + "" )){
 		errors.confirmnewpassword = 'This field is required';
 	}
 

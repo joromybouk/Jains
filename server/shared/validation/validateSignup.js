@@ -1,28 +1,28 @@
-import Validator from 'Validator';
+var validator = require('validator');
 import isEmpty from 'lodash/isEmpty';
 
 export default function validateInput(data){
 	let errors = {};
 
-	if(!(Validator.isEmail(data.email + ""))){
+	if(!(validator.isEmail(data.email + ""))){
 		errors.email = 'Invalid email';
 	}
-	if(Validator.isEmpty(data.email + "")){
+	if(validator.isEmpty(data.email + "")){
 		errors.email = 'This field is required';
 	}
 	if( (data.password + "" ).length < 6 ){
 		errors.password = 'Password must be at least 6 characters';
 	}
-	if(Validator.isEmpty(data.password + "" )){
+	if(validator.isEmpty(data.password + "" )){
 		errors.password = 'This field is required';
 	}
-	if(Validator.isEmpty(data.passwordConfirmation + "" )){
+	if(validator.isEmpty(data.passwordConfirmation + "" )){
 		errors.passwordConfirmation = 'This field is required';
 	}
-	if(!Validator.equals(data.password+ "" ,data.passwordConfirmation+ "" )){
+	if(!validator.equals(data.password+ "" ,data.passwordConfirmation+ "" )){
 		errors.passwordConfirmation = "Passwords must match";
 	}
-	if(Validator.isEmpty(data.timezone + "" )){
+	if(validator.isEmpty(data.timezone + "" )){
 		errors.timezone = 'This field is required';
 	}
 	
