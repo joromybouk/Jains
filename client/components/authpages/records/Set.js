@@ -10,9 +10,10 @@ class Set extends React.Component{
 		const rep = this.props.set.reps;
 		const weight = this.props.set.weight;
 		const unit = this.props.set.unit;
+		const setnum = this.props.index + 1;
 
 		return(	
-				<p>{weight}{unit} x {rep}</p>
+				<p> Set {setnum}:&nbsp;&nbsp;{weight}{unit} x {rep} </p>
 			)
 		}
 	}

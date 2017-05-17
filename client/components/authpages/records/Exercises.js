@@ -18,7 +18,7 @@ class Exercises extends React.Component{
 
 		const exercise_sets = (
 			sets.map(function(set,i){
- 					return <Set set={set} key={i} />;
+ 					return <Set set={set} key={i} index={i}/>;
  				})
 		);
 

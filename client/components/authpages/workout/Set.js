@@ -31,11 +31,12 @@ class Set extends React.Component{
 		const weight = this.props.set.weight;
 		const unit = this.props.set.unit;
 		const showBin = this.state.showBin;
+		const setnum = this.props.index + 1;
 
 		const bin = (<p onClick={this.deleteEntry}>&nbsp;&nbsp;&nbsp;&#128465;</p>);
 
 		return(	<div className="container">
-					<p onClick={this.textClicked} className="alignleft">{weight}{unit} x {rep} </p>
+					<p onClick={this.textClicked} className="alignleft">Set {setnum}:&nbsp;&nbsp;{weight}{unit} x {rep} </p>
 					{showBin ? bin : null}
 				</div>
 			)
