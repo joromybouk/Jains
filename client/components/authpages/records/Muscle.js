@@ -5,6 +5,8 @@ import MuscleInd from './MuscleInd';
 import { connect } from 'react-redux';
 require('../../css/styles.css');
 require('../../css/records.css');
+require('../../css/titles.css');
+
 
 class Muscle extends React.Component{
 	constructor(props){

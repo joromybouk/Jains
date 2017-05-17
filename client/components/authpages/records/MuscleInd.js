@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router';
 import Exercises from './Exercises';
 import { connect } from 'react-redux';
 
+require('../../css/titles.css');
+
 class MuscleInd extends React.Component{
 	constructor(){
 		super();
@@ -25,7 +27,9 @@ class MuscleInd extends React.Component{
 	
 		return(
 			<div>
-				<h1> { name } </h1>
+				<div className ="muscletitle">
+					<h1> { name } </h1>
+				</div>
 				{exerciseDisp}
 			</div>
 			)

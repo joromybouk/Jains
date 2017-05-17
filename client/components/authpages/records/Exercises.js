@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Set from './Set';
 
+require('../../css/titles.css');
+
 class Exercises extends React.Component{
 	constructor(){
 		super();
@@ -23,8 +25,8 @@ class Exercises extends React.Component{
 		);
 
 		return(
-			<div>
-				<p> { name }: </p>
+			<div className ="exercisetitle">
+				<h1> { name }: </h1>
 				{exercise_sets}
 			</div>
 			)
