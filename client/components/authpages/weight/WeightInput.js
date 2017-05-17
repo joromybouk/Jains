@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import map from 'lodash/map';
 import ExerciseInputField from '../../generic/ExerciseInputField';
 require('../../css/styles.css');
+require('../../css/weightinput.css');
 
 class WeightInput extends React.Component{
 	constructor(props){
@@ -103,7 +104,7 @@ class WeightInput extends React.Component{
 				<div>
 					<div className = "root">
 						<ExerciseInputField 
-						label="weight"
+						label="Weight"
 						onChange={this.onChange}
 						value={this.state.weight}
 						field="weight"
@@ -111,8 +112,9 @@ class WeightInput extends React.Component{
 						/>
 					</div>
 					<div className = "root">
-			          <label>unit</label>
+			          <label>Unit</label>
 			          <select
+			          	className="unit"
 			            name="unit"
 			            onChange={this.onChange}
 			            value={this.state.unit}

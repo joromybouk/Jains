@@ -5,6 +5,8 @@ import validateInput from '../../../server/shared/validation/validateSignup';
 import TextField from '../generic/TextField';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
+require('../css/buttons.css');
+require('../css/titles.css');
 
 
 class SignupForm extends React.Component{
@@ -53,8 +55,9 @@ class SignupForm extends React.Component{
 		const { errors } = this.state;
 		return(
 			<form onSubmit = {this.onSubmit}>
+			<div className="regtitle">
 				<h1>Join the Jainers!</h1>
-				
+			</div>
 				<TextField 
 				error={errors.email}
 				label="Email"
@@ -83,7 +86,7 @@ class SignupForm extends React.Component{
 				<div className="form-group">
 				<button
 					disabled={this.state.isLoading}
-					className = "btn btn-primary btn-lg">
+					className = "nonauth">
 					Register
 				</button>
 				</div>

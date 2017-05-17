@@ -31,17 +31,16 @@
 	border-radius: 2em;
 	margin-top: 2em;
 	margin-bottom: 3em;
-	width : 7.5em;
 
 	color: red;
 	background-color: black;
-	border-color: red;
+	border: none;
 }
 
 .addset{
-	font-size: 1.0em;
+	font-size: 0.8em;
 	margin-bottom: 1em;
-	margin-left: 1em;
+	margin-left: 0.5em;
 	color: red;
 	display: inline-block;
 }
@@ -49,8 +48,8 @@
 .addset button{
 	border-radius:10em;
 	color: red;
-	background-color: black;
-	border-color: red;
+	background: none;
+	border: none;
 }
 
 .back {
@@ -61,6 +60,16 @@
 	border-color: red;
 }
 
+
+.nonauth{
+	border-radius: 2em;
+	color: red;
+	background-color: black;
+	border-color: red;
+	height: 2em;
+	width: 5em;
+	font-size: 1.5em;
+}
 
 .close {
 	display: inline-block;

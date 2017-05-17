@@ -6,6 +6,8 @@ import TextField from '../generic/TextField';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 
+require('../css/buttons.css');
+
 class LoginForm extends React.Component{
 	constructor(props){
     	super(props);
@@ -71,7 +73,7 @@ class LoginForm extends React.Component{
 				<div className="form-group">
 				<button
 					disabled={this.state.isLoading}
-					className = "btn btn-primary btn-lg">
+					className = "nonauth">
 					Log in
 				</button>
 				</div>

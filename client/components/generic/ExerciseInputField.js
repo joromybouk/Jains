@@ -2,12 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 
 const ExerciseInputField = ({type,field,value,label,onChange}) => {
-
+require('../css/weightinput.css');
 
 	return (
 		<div>
-			<label className = "control-label">{label}</label>
+			<label>{label}</label>
 			<input
+				className = "weight"
 				value ={value}
 				onChange= {onChange}
 				name= {field}
