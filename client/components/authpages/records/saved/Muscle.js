@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import { registerWorkoutInfo, deleteMusle } from '../../../../actions/workoutActions';
 import MuscleList from './MuscleList';
 
-require('../../../css/styles.css');
+require('../../../css/musclelist.css');
 require('../../../css/buttons.css');
 require('../../../css/titles.css');
 
@@ -123,28 +123,34 @@ class Muscle extends React.Component{
  		const muscleList = (
 	      	<div className = "app">
 	 			<div >
-	 			<a className="root" onClick={this.turnOff}>&times;</a>
-	 			<center>
-	 			<ul>
-				    {this.createListElement("abdominals")}
-	 				{this.createListElement("abductors")}
-	 				{this.createListElement("adductors")}
-	 				{this.createListElement("biceps")}
-	 				{this.createListElement("calves")}
-	 				{this.createListElement("chest")}
-	 				{this.createListElement("forearms")}
-	 				{this.createListElement("glutes")}
-	 				{this.createListElement("hamstrings")}
-	 				{this.createListElement("lats")}
-	 				{this.createListElement("lower back")}
-	 				{this.createListElement("middle back")}
-	 				{this.createListElement("quadriceps")}
-	 				{this.createListElement("shoulders")}
-	 				{this.createListElement("traps")}
-	 				{this.createListElement("triceps")}
-	 				{this.createListElement("neck")}
-				 </ul>
+	 			<div className = "closex">
+					<p onClick={this.turnOff}>&times;</p>
+	      		</div>
+
+	      		<div className = "musclelist">
+		 			<center>
+		 			
+		 			<ul>
+		 				{this.createListElement("abdominals")}
+		 				{this.createListElement("abductors")}
+		 				{this.createListElement("adductors")}
+		 				{this.createListElement("biceps")}
+		 				{this.createListElement("calves")}
+		 				{this.createListElement("chest")}
+		 				{this.createListElement("forearms")}
+		 				{this.createListElement("glutes")}
+		 				{this.createListElement("hamstrings")}
+		 				{this.createListElement("lats")}
+		 				{this.createListElement("lower back")}
+		 				{this.createListElement("middle back")}
+		 				{this.createListElement("quadriceps")}
+		 				{this.createListElement("shoulders")}
+		 				{this.createListElement("traps")}
+		 				{this.createListElement("triceps")}
+		 				{this.createListElement("neck")}
+					 </ul>
 				 </center>
+				  </div>
 				 </div>
 	 		</div>
     	);

@@ -56,7 +56,7 @@ class SignupForm extends React.Component{
 		return(
 			<form onSubmit = {this.onSubmit}>
 			<div className="regtitle">
-				<h1>Join the Jainers!</h1>
+				<h1>Join the Jainers</h1>
 			</div>
 				<TextField 
 				error={errors.email}

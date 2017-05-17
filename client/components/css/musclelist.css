@@ -1,0 +1,30 @@
+.musclelist{
+	text-align: center;
+	width: 95%;
+
+}
+
+.closex {
+	display: inline-block;
+	margin-top: 1.75em;
+	width: 105%;
+}
+
+.closex p {
+	text-align: center;
+	color : #000080;
+	opacity: 1.0;
+	font-size: 2em;
+
+}
+
+.lists{
+	list-style-type: none;
+	margin : auto;
+	font-size: 2em;
+	cursor: pointer;
+	margin: 13px 0px 13px 0px;
+}
+.lists a {
+	color: #000080;
+}

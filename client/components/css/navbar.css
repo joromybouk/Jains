@@ -45,10 +45,10 @@
 }
 
 .navbar li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #00264d;
 
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #00264d;
 }
