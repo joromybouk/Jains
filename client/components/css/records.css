@@ -1,4 +1,9 @@
 .root {display :inline-block;}
 
 
-.records { margin-top: 150px}
+.records { margin-top: 7.5em}
+
+.musclerecord{
+	float:left;
+	width: 70%;
+}

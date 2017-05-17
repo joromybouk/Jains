@@ -10,6 +10,8 @@ import { changePass } from '../../actions/authAction';
 
 require('../css/titles.css');
 
+require('../css/buttons.css');
+
 class SettingsMain extends React.Component{
 	constructor(props){
 		super(props);
@@ -103,7 +105,7 @@ class SettingsMain extends React.Component{
 				<div className="form-group">
 				<button
 					disabled={this.state.isLoading}
-					className = "btn btn-primary btn-lg">
+					className = "nonauth">
 					Change
 				</button>
 				</div>

@@ -9,6 +9,7 @@ import Set from '../../workout/Set';
 require('../../../css/styles.css');
 require('../../../css/exercise.css');
 require('../../../css/buttons.css');
+require('../../../css/titles.css');
 
 
 class Exercise extends React.Component{
@@ -91,8 +92,8 @@ class Exercise extends React.Component{
 
 		const exerciseTitle = (
 		<div>
-			<div className = "root">
-				<p onClick={this.textClicked}>{name}:</p>
+			<div className = "exercisetitle">
+				<h1 onClick={this.textClicked}>{name}:</h1>
 			</div>
 			<div className="addset">
 				<p 
@@ -102,7 +103,6 @@ class Exercise extends React.Component{
 			<div className="root">
 				{showBin ? bin : null}
 			</div>
-
 		</div>
 		);
 

@@ -8,6 +8,7 @@ import { registerWorkoutInfo, deleteMusle } from '../../../actions/workoutAction
 import { connect } from 'react-redux';
 require('../../css/styles.css');
 require('../../css/buttons.css');
+require('../../css/titles.css');
 
 class MuscleList extends React.Component{
 	constructor(){
@@ -128,7 +129,7 @@ class MuscleList extends React.Component{
 		return(
 			<div className="muscleborder">
 				<div className={styleToChoose}>
-					<div className="root">
+					<div className="muscletitle">
 						<h1 onClick={this.textClicked}>{name}</h1>
 					</div>
 					<div className="root">

@@ -64,7 +64,7 @@ class Muscle extends React.Component{
 		const title = this.workoutTitle(muscleGroup);
 		const date = this.props.date;
 		const showBin = this.state.showBin;
-		const bin = (<h1 className="alignright" onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</h1>);
+		const bin = (<h1 className="alignright" onClick={this.deleteEntry}> &#128465;</h1>);
 
 		const arrowDown = (
 			<p className = "alignright" onClick={this.arrowClick}> &#x25BE; </p>
@@ -77,7 +77,9 @@ class Muscle extends React.Component{
 		const titleDisp = (
 			<div className="titleborder">
 
-					<p onClick={this.continue} className = "alignleft">{title}</p>
+					<p onClick={this.continue} className = "musclerecord">{title}</p>
+
+
 					{show ? arrowUp : arrowDown }
 					<p className = "alignright" onClick={this.arrowClick}> {date} </p>
 					

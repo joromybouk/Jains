@@ -7,6 +7,7 @@ import MuscleList from './MuscleList';
 
 require('../../../css/styles.css');
 require('../../../css/buttons.css');
+require('../../../css/titles.css');
 
 
 class Muscle extends React.Component{

@@ -141,7 +141,7 @@ class MuscleList extends React.Component{
 		return(
 			<div className="muscleborder">
 				<div className={styleToChoose}>
-					<div className="root">
+					<div className="muscletitle">
 						<h1 onClick={this.textClicked}>{name}</h1>
 					</div>
 					<div className="root">
