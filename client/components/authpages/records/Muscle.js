@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import MuscleInd from './MuscleInd';
 import { connect } from 'react-redux';
 require('../../css/styles.css');
+require('../../css/records.css');
 
 class Muscle extends React.Component{
 	constructor(props){
@@ -33,10 +34,10 @@ class Muscle extends React.Component{
 		var muscleTitle = '';
 		muscleGroup.map(function(muscle,i){
 			if(muscle.name){
- 				muscleTitle = muscleTitle + muscle.name + "/"
+ 				muscleTitle = muscleTitle + muscle.name.toString() + " / "
  			}
  		})
-		muscleTitle = muscleTitle.substring(0, muscleTitle.length-1);
+		muscleTitle = muscleTitle.substring(0, muscleTitle.length-2);
 		if(this.props.index == 0){
 			muscleTitle = muscleTitle + " (Click to Continue)";
 		}
