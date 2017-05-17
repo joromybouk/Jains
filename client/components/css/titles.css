@@ -1,0 +1,13 @@
+
+
+
+.titles h1{
+	color: black;
+	text-shadow: 0.003em 0.003em 0.003em red;
+	text-align: center;
+	font-weight: normal;
+	font-family: "Palatino Linotype";
+	font-size: 3em;
+	margin-bottom: 1em;
+
+}

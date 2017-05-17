@@ -8,6 +8,7 @@ import Set from '../../workout/Set';
 
 require('../../../css/styles.css');
 require('../../../css/exercise.css');
+require('../../../css/buttons.css');
 
 
 class Exercise extends React.Component{
@@ -92,9 +93,8 @@ class Exercise extends React.Component{
 			<div className = "root">
 				<p onClick={this.textClicked}>{name}:</p>
 			</div>
-			<div className = "root">
+			<div className="addset">
 				<button 
-				className = "addExerciseButton"
 				onClick = {this.onSubmit}
 				>+</button>
 			</div>

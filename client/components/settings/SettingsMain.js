@@ -8,6 +8,8 @@ import TextField from '../generic/TextField'
 import validateInput from '../../../server/shared/validation/validatePassChange';
 import { changePass } from '../../actions/authAction';
 
+require('../css/titles.css');
+
 class SettingsMain extends React.Component{
 	constructor(props){
 		super(props);
@@ -64,7 +66,7 @@ class SettingsMain extends React.Component{
 	render(){
 		const { errors } = this.state;
 		return(
-			<div>
+			<div className ="titles">
 				<center>
 					<h1>Account Settings</h1>
 				</center>

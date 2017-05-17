@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import { registerNewWorkout, retrieveRecords, removeWorkout } from '../../actions/workoutActions';
 require('../css/records.css')
 require('../css/buttons.css')
+require('../css/titles.css')
 
 
 class MainPage extends React.Component{
@@ -95,9 +96,9 @@ class MainPage extends React.Component{
 
  		return(
  		<div>
- 			<center>
- 			<h1>Workout Records</h1>
- 			</center>
+ 			<div className = "titles">
+	 			<h1>Workout Records</h1>
+ 			</div>
  			
 			<button className = "addbutton" onClick = {this.onSubmit} >+ Workout</button>
  			

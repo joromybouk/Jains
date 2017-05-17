@@ -1,13 +1,16 @@
 
 .addbutton {
 	border-radius: 2em;
-	margin-top: 0.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: 2em;
 	font-size: 1.3em;
-	width : 10em;
+	width : 6em;
 	margin-left: auto;
     margin-right: auto;
     display: block;
+
+    color: red;
+	background-color: black;
+	border-color: red;
 }
 .addmuscle {
 	border-radius: 2em;
@@ -18,17 +21,44 @@
 	margin-left: auto;
     margin-right: auto;
     display: block;
+
+
+    color: red;
+	background-color: black;
+	border-color: red;
 }
 .addexercise {
 	border-radius: 2em;
 	margin-top: 2em;
 	margin-bottom: 3em;
-	font-size: 0.8em;
 	width : 7.5em;
+
+	color: red;
+	background-color: black;
+	border-color: red;
+}
+
+.addset{
+	font-size: 1.0em;
+	margin-bottom: 1em;
+	margin-left: 1em;
+	color: red;
+	display: inline-block;
+}
+
+.addset button{
+	border-radius:10em;
+	color: red;
+	background-color: black;
+	border-color: red;
 }
 
 .back {
 	border-radius: 2em;
+	margin-bottom: 2em;
+	color: red;
+	background-color: black;
+	border-color: red;
 }
 
 

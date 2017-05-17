@@ -8,6 +8,7 @@ import map from 'lodash/map';
 import { registerNewWeight, getWeights, removeWeight } from '../../../actions/weightActions';
 require('../../css/styles.css');
 require('../../css/records.css');
+require('../../css/titles.css');
 
 class Weight extends React.Component{
 	constructor(props){
@@ -93,10 +94,13 @@ class Weight extends React.Component{
 		return(
 			<div>
 				<center>
+				<div className ="titles">
 					<h1>Weight Records</h1>
+				</div>
 						<WeightInput newWeightAdded={this.newWeightAdded} />
 						{weightsDisplay}
 						{noRecords}
+				
 
 				</center>
 			</div>

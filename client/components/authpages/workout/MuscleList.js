@@ -111,9 +111,13 @@ class MuscleList extends React.Component{
  				})
 		);
 		const exercliseList = (
-	      	<div className = "app">
-	 			<a className="root" onClick={this.turnOff}>&times;</a>
-	 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
+	      	<div>
+				<div className = "close">
+					<p onClick={this.turnOff}>&times;</p>
+	      		</div>
+		      	<div className = "exlist">	
+		 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
+		 		</div>
 	 		</div>
     	);
 		const addEx = (

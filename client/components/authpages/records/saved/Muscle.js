@@ -176,7 +176,10 @@ class Muscle extends React.Component{
 
 		return(
 				<div>
- 				<button className ="back" onClick = {this.back} >&larr; Record</button>
+ 				<div>
+	 				<button className ="back" onClick = {this.back} >&larr; Record</button>
+ 				</div>
+ 				<div className = "titleborder"></div>
  					{hideAll ? muscleDivInv : muscleDivVis}
  					{exerciseOption ? null : options}
  				</div>

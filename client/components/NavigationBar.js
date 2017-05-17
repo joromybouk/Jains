@@ -18,16 +18,14 @@ class NavigationBar extends React.Component {
 
   render(){
     const { isAuthenticated } = this.props.auth;
-    const floater={
-      float: 'right',
-    }
+    
     const userLinks = (
       <div className="navbar">
         <ul>
           <li><a onClick={()=>this.onSubmit("mainpage")}>Workouts</a></li>
           <li><a onClick={()=>this.onSubmit("weight")}>Weights</a></li>
           <li><a onClick={()=>this.onSubmit("settings")}>Settings</a></li>
-          <li><a style={floater} onClick={this.logout.bind(this)}>Logout</a></li>
+          <li><a onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>
       </div>
     );

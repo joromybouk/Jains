@@ -8,6 +8,7 @@ import { deleteSet, deleteExercise } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
 
 require('../../css/styles.css');
+require('../../css/buttons.css');
 
 class Exercise extends React.Component{
 	constructor(){
@@ -27,8 +28,11 @@ class Exercise extends React.Component{
 
 	onSubmit(e){
 		e.preventDefault();
+
+		var input = this.state.newInput;
+
 		this.setState({
-			newInput: true
+			newInput: !input,
 		})
 	}
 	hideInput(set){
@@ -71,11 +75,7 @@ class Exercise extends React.Component{
 		const sets = this.state.sets;
 		const removeSet = this.removeSet;
 
-		const style = {
-			backgroundColor : 'Transparent',
-			border : 'none',
-			color: 'blue',
-		};
+		
 		const showBin = this.state.showBin;
 		const bin = (<p onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</p>);
 
@@ -84,9 +84,8 @@ class Exercise extends React.Component{
 			<div className = "root">
 				<p onClick={this.textClicked}>{name}:</p>
 			</div>
-			<div className = "root">
+			<div className="addset">
 				<button 
-				style={style}
 				onClick = {this.onSubmit}
 				>+</button>
 			</div>
