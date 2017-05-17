@@ -12,5 +12,12 @@
 	display: inline-block;
 	border-radius: 5em;
 	margin-left: 0.5em;
+	margin-right: 0.5em;
 	background-color: red;
+}
+
+.tick{
+	display: inline-block;;
+	margin-left: 0.5em;
+	cursor: pointer;
 }

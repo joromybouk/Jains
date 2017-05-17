@@ -6,6 +6,7 @@ import { registerSet } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
 import map from 'lodash/map';
 require('../../css/styles.css');
+require('../../css/weightinput.css');
 
 class ExerciseInput extends React.Component{
 	constructor(){
@@ -49,33 +50,41 @@ class ExerciseInput extends React.Component{
     	);
 		return(	<div>
 
-					
-					<ExerciseInputField 
-					label="weight"
-					onChange={this.onChange}
-					value={this.state.weight}
-					field="weight"
-					type ="text"
-					/>
-			          <label>unit</label>
-			          <select
-			            name="unit"
-			            onChange={this.onChange}
-			            value={this.state.unit}
-			          >
-			            <option value="" disabled></option>
-			            {options}
-			          </select>
-			        <ExerciseInputField 
-					label="reps"
-					onChange={this.onChange}
-					value={this.state.reps}
-					field="reps"
-					type ="number"
-					/>
+					<div className = "root">
+						<ExerciseInputField 
+						label="Weight"
+						onChange={this.onChange}
+						value={this.state.weight}
+						field="weight"
+						type ="text"
+						/>
+					</div>
+					<div className="root">
+				          <label>Unit</label>
+				          <select
+				          	className="unit"
+				            name="unit"
+				            onChange={this.onChange}
+				            value={this.state.unit}
+				        	>
+				            <option value="" disabled></option>
+				            {options}
+				          </select>
+			          </div>
+			          <div className = "root">
+				        <ExerciseInputField 
+						label="Reps"
+						onChange={this.onChange}
+						value={this.state.reps}
+						field="reps"
+						type ="number"
+						/>
+					</div>
+					<div className = "tick">
+						 <p onClick={this.onSubmit}> &nbsp;&#10003; </p>
+					</div>
 
-
-			    <p onClick={this.onSubmit}> &#10003; </p>
+			   
 				</div>
 			)
 		}

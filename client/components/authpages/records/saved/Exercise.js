@@ -40,9 +40,10 @@ class Exercise extends React.Component{
 	}
 
 	onSubmit(e){
+		var input = this.state.newInput;
 		e.preventDefault();
 		this.setState({
-			newInput: true
+			newInput: !input,
 		})
 	}
 	hideInput(set){
@@ -94,9 +95,9 @@ class Exercise extends React.Component{
 				<p onClick={this.textClicked}>{name}:</p>
 			</div>
 			<div className="addset">
-				<button 
+				<p 
 				onClick = {this.onSubmit}
-				>+</button>
+				>+Set</p>
 			</div>
 			<div className="root">
 				{showBin ? bin : null}

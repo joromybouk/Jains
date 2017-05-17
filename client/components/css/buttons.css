@@ -43,6 +43,7 @@
 	margin-left: 0.5em;
 	color: red;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .addset button{
@@ -50,6 +51,7 @@
 	color: red;
 	background: none;
 	border: none;
+
 }
 
 .back {
