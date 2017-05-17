@@ -39,7 +39,7 @@ class MainPage extends React.Component{
 		}
 		var text = '';
 		if(data.length == 0){
-			text = 'Start tracking your workouts!';
+			text = 'Start tracking your workouts';
 		}
 		this.setState({
 			data: data,
@@ -53,7 +53,7 @@ class MainPage extends React.Component{
 	getPreviousRecords(){
 		this.props.retrieveRecords(15).then(
 			(response)=>{
-				this.setState({text:'Start tracking your workouts!', data:response.data.info, dates: response.data.dates })
+				this.setState({text:'Start tracking your workouts', data:response.data.info, dates: response.data.dates })
 			},
 			(response)=>{this.setState({text: ''})}
 		);

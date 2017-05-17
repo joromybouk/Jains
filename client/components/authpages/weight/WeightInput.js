@@ -123,6 +123,7 @@ class WeightInput extends React.Component{
 			            {options}
 			          </select>
 			        </div>
+			        
 			        <div className = "root">
 					    <p onClick={this.onSubmit}> &emsp;&emsp; &#10003; </p>
 				    </div>

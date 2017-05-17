@@ -1,22 +1,22 @@
 
 
 .titles h1{
-	color: black;
-	text-shadow: 0.003em 0.003em 0.003em red;
+	color: #000080;
+	text-shadow: 0.003em 0.003em 0.003em white;
 	text-align: center;
 	font-weight: normal;
-	font-family: "Palatino Linotype";
+	font-family: "serif";
 	font-size: 3em;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 
 }
 
 .regtitle h1{
-	color: black;
-	text-shadow: 0.003em 0.003em 0.003em red;
+	color: #000080;
+	text-shadow: 0.003em 0.003em 0.003em white;
 	text-align: center;
 	font-weight: normal;
-	font-family: "Palatino Linotype";
+	font-family: "serif";
 	font-size: 3em;
 
 }
@@ -26,7 +26,7 @@
 }
 .exercisetitle h1{
 	font-size: 1.4em;
-	font-family: "Palatino Linotype";
+	font-family: "serif";
 	color:black;
 	text-align: left;
 
@@ -37,7 +37,7 @@
 	font-size: 2.75em;
 	display: inline-block;
 	margin-bottom: 0em;
-	font-family: "Palatino Linotype";
+	font-family: "serif";
 	color:black;
 	font-weight: normal;
 	text-align: left;

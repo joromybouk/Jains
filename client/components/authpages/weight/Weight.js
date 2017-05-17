@@ -51,7 +51,7 @@ class Weight extends React.Component{
 		}
 		var text = '';
 		if(weights.length == 0){
-			text = 'Keep track of your weight!';
+			text = 'Start tracking your weight';
 		}
 		this.setState({
 			weights: weights,

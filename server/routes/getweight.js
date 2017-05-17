@@ -21,7 +21,7 @@ function findProfile(db,res,email){
 			var weightList = [];
 			if(row.length === 0){
 				console.log("No weight records found");
-				var text = 'Start tracking your weight!';
+				var text = 'Start tracking your weight';
 				var toSend={
 					text: text,
 					weights: [],
