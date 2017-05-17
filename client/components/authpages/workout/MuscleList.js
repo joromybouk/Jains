@@ -117,7 +117,7 @@ class MuscleList extends React.Component{
 					<p onClick={this.turnOff}>&times;</p>
 	      		</div>
 		      	<div className = "exlist">	
-		 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
+		 			<WorkoutPage chosenexercises={exercises} selectExercise={this.selectExercise} muscleName = {name}/>
 		 		</div>
 	 		</div>
     	);

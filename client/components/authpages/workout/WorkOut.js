@@ -87,8 +87,16 @@ class Workout extends React.Component{
 			this.props.registerWorkoutInfo(musclename,'muscles', 'none');
 		}
 	}
-	createListElement(muscleName){
+	createListElement(muscleName,muscles){
+
+
 		var capitalName = muscleName.charAt(0).toUpperCase() + muscleName.slice(1);
+
+
+		if( muscles.indexOf(capitalName) > -1){
+			return;
+		}
+
 		return (<li className="lists"><a  onClick={() => this.addMuscle(muscleName)}>{capitalName}</a></li>);
 	}
 	onSubmit(e){
@@ -119,23 +127,23 @@ class Workout extends React.Component{
 		 			<center>
 		 			
 		 			<ul>
-		 				{this.createListElement("abdominals")}
-		 				{this.createListElement("abductors")}
-		 				{this.createListElement("adductors")}
-		 				{this.createListElement("biceps")}
-		 				{this.createListElement("calves")}
-		 				{this.createListElement("chest")}
-		 				{this.createListElement("forearms")}
-		 				{this.createListElement("glutes")}
-		 				{this.createListElement("hamstrings")}
-		 				{this.createListElement("lats")}
-		 				{this.createListElement("lower back")}
-		 				{this.createListElement("middle back")}
-		 				{this.createListElement("quadriceps")}
-		 				{this.createListElement("shoulders")}
-		 				{this.createListElement("traps")}
-		 				{this.createListElement("triceps")}
-		 				{this.createListElement("neck")}
+		 				{this.createListElement("abdominals",muscles)}
+						{this.createListElement("abductors",muscles)}
+						{this.createListElement("adductors",muscles)}
+						{this.createListElement("biceps",muscles)}
+						{this.createListElement("calves",muscles)}
+						{this.createListElement("chest",muscles)}
+						{this.createListElement("forearms",muscles)}
+						{this.createListElement("glutes",muscles)}
+						{this.createListElement("hamstrings",muscles)}
+						{this.createListElement("lats",muscles)}
+						{this.createListElement("lower back",muscles)}
+						{this.createListElement("middle back",muscles)}
+						{this.createListElement("quadriceps",muscles)}
+						{this.createListElement("shoulders",muscles)}
+						{this.createListElement("traps",muscles)}
+						{this.createListElement("triceps",muscles)}
+						{this.createListElement("neck",muscles)}
 					 </ul>
 				 </center>
 				  </div>

@@ -14,6 +14,7 @@ class WorkoutPage extends React.Component{
      
  	render(){
 		var muscleOption = this.props.muscleName;
+		var exercises = this.props.chosenexercises;
 		muscleOption = muscleOption.toLowerCase();
 		var type = "workout";
 
@@ -22,14 +23,15 @@ class WorkoutPage extends React.Component{
 			var abs = (fs.Muscle);
 			abs = abs.sort();
 			for(var i = 0; i < abs.length; i ++){
-				this.state.contacts.push({
-				name: abs[i],
-				phone: '',
-				id : i
-			});
+					this.state.contacts.push({
+					name: abs[i],
+					phone: '',
+					id : i
+				});
 			}
 		}
 		else{
+
 			var fs = require('../../../../../Scripts/test.json');
 			var abs = (fs.Muscle);
 			var list;
@@ -44,11 +46,16 @@ class WorkoutPage extends React.Component{
 			}
 			for(var i = 0; i < list.length; i ++){
 				list[i] = list[i].charAt(0).toUpperCase() + list[i].slice(1);
-				this.state.contacts.push({
-				name: list[i],
-				phone: '',
-				id : i
-			});
+
+				if(!(exercises.indexOf(list[i]) > -1)){
+					this.state.contacts.push({
+						name: list[i],
+						phone: '',
+						id : i
+					});
+				}
+
+				
 			}
 		}
  		return(
