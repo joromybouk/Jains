@@ -28,3 +28,17 @@
 .red{
 	color:red;
 }
+
+.hidden{
+	display: none;
+}
+
+.noList{
+	list-style: none;
+}
+
+.exlist{
+	display: inline-block;
+	width: 93%;
+
+}

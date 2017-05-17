@@ -5,7 +5,10 @@ import MuscleList from './MuscleList';
 import includes from 'lodash';
 import { registerWorkoutInfo } from '../../../actions/workoutActions';
 
-require('./styles.css');
+require('../../css/styles.css');
+require('../../css/buttons.css');
+
+
 // <MuscleList muscles={this.state.muscles} />
 class Workout extends React.Component{
 	constructor(props){
@@ -105,9 +108,7 @@ class Workout extends React.Component{
  		const optionOff = this.optionOff;
  		const removeMuscle = this.removeMuscle;
 
- 		const hideStyle={
- 			display: 'none'
- 		}
+ 		
  		const muscleList = (
 	      	<div className = "app">
 	 			<div >
@@ -128,6 +129,7 @@ class Workout extends React.Component{
 	 				{this.createListElement("lower back")}
 	 				{this.createListElement("middle back")}
 	 				{this.createListElement("quadriceps")}
+	 				{this.createListElement("shoulders")}
 	 				{this.createListElement("traps")}
 	 				{this.createListElement("triceps")}
 	 				{this.createListElement("neck")}
@@ -139,12 +141,7 @@ class Workout extends React.Component{
 
     	const button = (
     		<div>
-    			<div className= "root">
-	 				<button onClick = {this.onSubmit} >+</button>
-				</div>
-				<div className= "root">
-					<p>Add a muscle</p>
-	 			</div>
+	 			<button onClick = {this.onSubmit} className = "addmuscle" >+ Muscle</button>
     		</div>
     	);
     	const muscleDivs=(
@@ -159,7 +156,7 @@ class Workout extends React.Component{
  			</div>
  		);
  		const muscleDivInv=(
- 			<div style={hideStyle}>
+ 			<div className="hidden">
  				{muscleDivs}
  			</div>
  		);
@@ -170,7 +167,7 @@ class Workout extends React.Component{
  		)
  		return(
  			<div>
- 				<button onClick = {this.back} >&larr;</button>
+ 				<button className ="back" onClick = {this.back} >&larr; Record</button>
  				{hideAll ? muscleDivInv : muscleDivVis}
  				{exerciseOption ? null : options}
  			</div>

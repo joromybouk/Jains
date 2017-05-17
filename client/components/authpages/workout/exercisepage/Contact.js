@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+require('../../../css/exercise.css');
 
 class Contact extends React.Component{
 	constructor(props){
@@ -12,15 +12,13 @@ class Contact extends React.Component{
 	}
 
 	render(){
-		const style = {
-			backgroundColor: '#6aa7e7',
-			borderStyle: 'solid',
-		};
 		
 
 		return(
-			<li onClick={this.onSubmit} style = {style}>
-			{this.props.contact.name} {this.props.contact.phone}
+			<li onClick={this.onSubmit} className = "exerciseList">
+				<p>
+					{this.props.contact.name} {this.props.contact.phone}
+				</p>
 			</li>
 			)
 		}

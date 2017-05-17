@@ -6,7 +6,8 @@ import WeightInput from './WeightInput';
 import WeightInd from './WeightInd';
 import map from 'lodash/map';
 import { registerNewWeight, getWeights, removeWeight } from '../../../actions/weightActions';
-require('../workout/styles.css');
+require('../../css/styles.css');
+require('../../css/records.css');
 
 class Weight extends React.Component{
 	constructor(props){
@@ -80,12 +81,9 @@ class Weight extends React.Component{
  					return <WeightInd removeWeight={remove} weight={weight} index={i} key={i} />;
  				})
 		);
-		const findRecordStyle = {
- 			marginTop: '150px'
- 		}
 
  		const noRecords = (
- 			<div style= {findRecordStyle}>
+ 			<div className= "records">
 	 			<center>
 	 				{this.state.text}
 	 			</center>

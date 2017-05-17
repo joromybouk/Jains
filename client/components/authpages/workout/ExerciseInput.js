@@ -5,7 +5,7 @@ import ExerciseInputField from '../../generic/ExerciseInputField';
 import { registerSet } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
 import map from 'lodash/map';
-require('./styles.css');
+require('../../css/styles.css');
 
 class ExerciseInput extends React.Component{
 	constructor(){

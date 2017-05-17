@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import ExerciseInput from '../../workout/ExerciseInput';
 import Set from '../../workout/Set';
 
-require('../../workout/styles.css');
+require('../../../css/styles.css');
+require('../../../css/exercise.css');
+
 
 class Exercise extends React.Component{
 	constructor(props){
@@ -82,11 +84,6 @@ class Exercise extends React.Component{
 		const sets = this.state.sets;
 		const removeSet = this.removeSet;
 		console.log("Sets = " + sets);
-		const style = {
-			backgroundColor : 'Transparent',
-			border : 'none',
-			color: 'blue',
-		};
 		const showBin = this.state.showBin;
 		const bin = (<p onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</p>);
 
@@ -97,7 +94,7 @@ class Exercise extends React.Component{
 			</div>
 			<div className = "root">
 				<button 
-				style={style}
+				className = "addExerciseButton"
 				onClick = {this.onSubmit}
 				>+</button>
 			</div>

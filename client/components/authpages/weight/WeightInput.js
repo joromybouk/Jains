@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import ExerciseInputField from '../../generic/ExerciseInputField';
-require('../workout/styles.css');
+require('../../css/styles.css');
 
 class WeightInput extends React.Component{
 	constructor(props){

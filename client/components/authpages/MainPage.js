@@ -4,6 +4,9 @@ import { browserHistory } from 'react-router';
 import Muscle from './records/Muscle';
 import { Link } from 'react-router';
 import { registerNewWorkout, retrieveRecords, removeWorkout } from '../../actions/workoutActions';
+require('../css/records.css')
+require('../css/buttons.css')
+
 
 class MainPage extends React.Component{
 	constructor(props){
@@ -56,11 +59,7 @@ class MainPage extends React.Component{
 		return "test";
 	}
  	render(){
- 		
- 		const findRecordStyle = {
- 			marginTop: '150px'
- 		}
-
+ 	
  		const data = this.state.text;
  		const muscleData = this.state.data;
  		const dates = this.state.dates;
@@ -68,7 +67,7 @@ class MainPage extends React.Component{
  		var disp = false;
 
  		const noRecords = (
- 			<div style= {findRecordStyle}>
+ 			<div className = "records">
 	 			<center>
 	 				{this.state.text}
 	 			</center>
@@ -99,13 +98,9 @@ class MainPage extends React.Component{
  			<center>
  			<h1>Workout Records</h1>
  			</center>
-			<div style={{display: 'inline-block'}}>
- 				<button onClick = {this.onSubmit} >+</button>
-			</div>
-
-			<div style={{display: 'inline-block'}}>
-				<p> Add a workout </p>
- 			</div>
+ 			
+			<button className = "addbutton" onClick = {this.onSubmit} >+ Workout</button>
+ 			
  			{disp ? records : noRecords}
 		</div>
  		)

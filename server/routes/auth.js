@@ -38,7 +38,7 @@ function checkEmail(db,res,errors,email,password){
 					if(bcrypt.compareSync(password,row[i].password)){
 						const token = jwt.sign({email: row[i].email}, 
 							config.jwtSecret);
-						res.json({
+						res.status(200).json({
 							token
 						});
 

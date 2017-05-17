@@ -7,7 +7,7 @@ import Set from './Set';
 import { deleteSet, deleteExercise } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
 
-require('./styles.css');
+require('../../css/styles.css');
 
 class Exercise extends React.Component{
 	constructor(){

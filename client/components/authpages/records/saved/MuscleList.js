@@ -5,7 +5,9 @@ import WorkoutPage from '../../workout/exercisepage/WorkoutPage';
 import Exercise from './Exercise';
 import { registerWorkoutInfo, deleteMusle } from '../../../../actions/workoutActions';
 import { connect } from 'react-redux';
-require('../../workout/styles.css');
+require('../../../css/styles.css');
+
+require('../../../css/buttons.css');
 
 class MuscleList extends React.Component{
 	constructor(props){
@@ -98,12 +100,6 @@ class MuscleList extends React.Component{
 	}
 
 	render(){
-		const style = {
-		   borderBottomStyle: 'solid',
-		}
-		const hideStyle = {
-			display: 'none',
-		}
 
 		const name = this.props.muscle;
 		const vis = this.state.visible;
@@ -114,13 +110,13 @@ class MuscleList extends React.Component{
 		const removeExercise = this.removeExercise;
 		const workoutData = this.props.muscleData;
 		const muscleIndex = this.props.index;
-		var styleToChoose; 
+		var styleToChoose = "empty";
 
 		const showBin = this.state.showBin;
 		const bin = (<h1 onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</h1>);
 
 		if(hideBool){
-			styleToChoose = hideStyle;
+			styleToChoose = "hidden";
 		}
 		const exerciseDisp = (
  				exercises.map(function(exercises,i){
@@ -128,24 +124,23 @@ class MuscleList extends React.Component{
  				})
 		);
 		const exercliseList = (
-	      	<div className = "app">
-	 			<a className="root" onClick={this.turnOff}>&times;</a>
-	 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
+			<div>
+				<div className = "close">
+					<p onClick={this.turnOff}>&times;</p>
+	      		</div>
+		      	<div className = "exlist">	
+		 			<WorkoutPage selectExercise={this.selectExercise} muscleName = {name}/>
+		 		</div>
 	 		</div>
     	);
 		const addEx = (
 			<div>
-				<div className= "root">
-	 				<button onClick = {this.onSubmit} >+</button>
-				</div>
-				<div className= "root">
-					<p>Add an exercise</p>
-	 			</div>
+				<button className = "addexercise" onClick = {this.onSubmit} >+ Exercise</button>
 			</div>
 		);
 		return(
-			<div style={style}>
-				<div style={styleToChoose}>
+			<div className="muscleborder">
+				<div className={styleToChoose}>
 					<div className="root">
 						<h1 onClick={this.textClicked}>{name}</h1>
 					</div>

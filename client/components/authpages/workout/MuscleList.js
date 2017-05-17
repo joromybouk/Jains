@@ -6,7 +6,8 @@ import WorkoutPage from './exercisepage/WorkoutPage';
 import Exercise from './Exercise';
 import { registerWorkoutInfo, deleteMusle } from '../../../actions/workoutActions';
 import { connect } from 'react-redux';
-require('./styles.css');
+require('../../css/styles.css');
+require('../../css/buttons.css');
 
 class MuscleList extends React.Component{
 	constructor(){
@@ -88,12 +89,6 @@ class MuscleList extends React.Component{
 	}
 
 	render(){
-		const style = {
-		   borderBottomStyle: 'solid',
-		}
-		const hideStyle = {
-			display: 'none',
-		}
 
 		const name = this.props.muscle;
 		const vis = this.state.visible;
@@ -102,13 +97,13 @@ class MuscleList extends React.Component{
 		const showInputFunc = this.showInput; 
 		const hideBool = this.state.hideAll;
 		const removeExercise = this.removeExercise;
-		var styleToChoose; 
+		var styleToChoose = "empty";
 
 		const showBin = this.state.showBin;
 		const bin = (<h1 onClick={this.deleteEntry}> &nbsp;&nbsp;&nbsp;&#128465;</h1>);
 
 		if(hideBool){
-			styleToChoose = hideStyle;
+			styleToChoose = "hidden";
 		}
 		const exerciseDisp = (
  				exercises.map(function(exercises,i){
@@ -123,17 +118,12 @@ class MuscleList extends React.Component{
     	);
 		const addEx = (
 			<div>
-				<div className= "root">
-	 				<button onClick = {this.onSubmit} >+</button>
-				</div>
-				<div className= "root">
-					<p>Add an exercise</p>
-	 			</div>
+	 			<button className = "addexercise" onClick = {this.onSubmit} >+ Exercise</button>
 			</div>
 		);
 		return(
-			<div style={style}>
-				<div style={styleToChoose}>
+			<div className="muscleborder">
+				<div className={styleToChoose}>
 					<div className="root">
 						<h1 onClick={this.textClicked}>{name}</h1>
 					</div>

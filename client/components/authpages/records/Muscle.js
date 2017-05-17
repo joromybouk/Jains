@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import MuscleInd from './MuscleInd';
 import { connect } from 'react-redux';
-require('../workout/styles.css');
+require('../../css/styles.css');
 
 class Muscle extends React.Component{
 	constructor(props){
@@ -58,9 +58,6 @@ class Muscle extends React.Component{
 		}
 	}
 	render(){
-		const hideStyle = {
-			display: 'none',
-		}
 
 		const muscleGroup = this.props.muscleData.muscles;
 		const show = this.state.show;

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
-require('../workout/styles.css');
+require('../../css/styles.css');
 
 class WeightInd extends React.Component{
 	constructor(props){

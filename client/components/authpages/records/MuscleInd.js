@@ -15,13 +15,6 @@ class MuscleInd extends React.Component{
 	render(){
 		const name = this.props.muscle.name;
 		const exercises = this.props.muscle.exercises;
-		
-		const style = {
-		   borderBottomStyle: 'solid',
-		}
-		const hideStyle = {
-			display: 'none',
-		}
 
 		const exerciseDisp = (
 				exercises.map(function(exercises,i){

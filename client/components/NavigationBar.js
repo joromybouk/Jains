@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authAction';
 import { browserHistory } from 'react-router';
-require('./maincomponents.css')
+require('./css/navbar.css')
 
 
 class NavigationBar extends React.Component {

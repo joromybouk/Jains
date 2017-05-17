@@ -1,0 +1,46 @@
+
+.addbutton {
+	border-radius: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 1.5em;
+	font-size: 1.3em;
+	width : 10em;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.addmuscle {
+	border-radius: 2em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	font-size: 1.3em;
+	width : 6em;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.addexercise {
+	border-radius: 2em;
+	margin-top: 2em;
+	margin-bottom: 3em;
+	font-size: 0.8em;
+	width : 7.5em;
+}
+
+.back {
+	border-radius: 2em;
+}
+
+
+.close {
+	display: inline-block;
+	margin-top: 1em;
+	width: 100%;
+}
+
+.close p {
+	text-align: center;
+	color : black;
+	opacity: 1.0;
+	font-size: 1.5em;
+}

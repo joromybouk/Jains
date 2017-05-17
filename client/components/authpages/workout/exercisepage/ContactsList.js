@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Contact from './Contact';
 
+require('../../../css/styles.css');
+require('../../../css/exercise.css');
+
+
 class ContactsList extends React.Component{
 	constructor(){
 		super();
@@ -21,23 +25,24 @@ class ContactsList extends React.Component{
 				}
 			);
 
-		const style = {
-    	listStyle: 'none'
-  		};
-  		const style2 = {
-    	borderColor: "black"
-  		};
-  		
 		return(
+			<div className = "searchicon">
 			<div>
-			&#128269;  &nbsp;
-			<input type = "text"
-			style = {style2} 
-			value ={this.state.search}
-			onChange={this.updateSearch.bind(this)}
-			/>
 			
-			<ul style ={style}>
+				<ul className = "noList">
+					<h1>
+					&#128269;  
+					</h1>
+				<input type = "text"
+				value ={this.state.search}
+				onChange={this.updateSearch.bind(this)}
+				className = "searchbar"
+				/>
+				</ul>
+			
+			</div>
+			
+			<ul className ="noList">
 			{filteredContacts.map((contact)=> {
 				return <Contact selectExercise={this.props.selectExercise} contact={contact} key={contact.id}/>
 			})}
