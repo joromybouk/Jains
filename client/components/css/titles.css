@@ -25,6 +25,21 @@
 	display: inline-block;
 }
 
+.all{
+	width:100%;
+}
+
+
+.exercisetitle h3{
+	float:left;
+	font-size: 1.5em;
+	font-family: "serif";
+	color:black;
+	text-align: left;
+	border-color: black;
+	border-bottom-style: solid;
+	border-width: 0.01em;
+}
 
 .exercisetitle h1{
 	float:left;
@@ -35,6 +50,7 @@
 	border-color: black;
 	border-bottom-style: solid;
 	border-width: 0.01em;
+	width: 70%;
 }
 
 .exercisetitle h2{
