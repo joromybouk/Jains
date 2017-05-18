@@ -39,6 +39,7 @@ function findProfile(db,res,email){
 					}
 					weightList.push(weight);
 				}
+				weightList.reverse();
 				var toSend={
 					text: '',
 					weights: weightList,
