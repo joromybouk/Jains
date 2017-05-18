@@ -29,6 +29,9 @@ export default {
       },
         {test: /\.json$/, loader: 'json-loader'},
         {test: /\.css$/, loader: "style-loader!css-loader"},
+        {test: /\.png$/, loader: 'file-loader'},
+        {test: /\.svg$/,loader: 'babel!react-svg'}
+
     ]
   },
 

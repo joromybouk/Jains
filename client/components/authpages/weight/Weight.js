@@ -9,6 +9,10 @@ import { registerNewWeight, getWeights, removeWeight } from '../../../actions/we
 require('../../css/styles.css');
 require('../../css/records.css');
 require('../../css/titles.css');
+require('../../css/images.css');
+import Scale from '../../../images/scale.svg';
+
+
 
 class Weight extends React.Component{
 	constructor(props){
@@ -36,7 +40,6 @@ class Weight extends React.Component{
 		this.props.getWeights().then(
 			(response)=>{
 				this.setState({weights:response.data.weights, text: response.data.text})
-
 			},
 			(response)=>{}
 		);
@@ -92,12 +95,18 @@ class Weight extends React.Component{
 
 		return(
 			<div>
+			
+				
 				<center>
 				<div className ="titles">
 					<h1>Weight Records</h1>
 				</div>
 						<WeightInput newWeightAdded={this.newWeightAdded} />
 						{weightsDisplay}
+						<div className = "weightimgdiv">
+							<Scale className= "weightimage" />
+						</div>
+
 						{noRecords}
 				
 
