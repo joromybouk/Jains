@@ -25,9 +25,11 @@ class Exercises extends React.Component{
 		);
 
 		return(
+			<div>
 			<div className ="exercisetitle">
 				<h1> { name }: </h1>
 				{exercise_sets}
+			</div>
 			</div>
 			)
 		}

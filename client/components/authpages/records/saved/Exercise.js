@@ -94,14 +94,8 @@ class Exercise extends React.Component{
 		<div>
 			<div className = "exercisetitle">
 				<h1 onClick={this.textClicked}>{name}:</h1>
-			</div>
-			<div className="addset">
-				<p 
-				onClick = {this.onSubmit}
-				>+Set</p>
-			</div>
-			<div className="root">
-				{showBin ? bin : null}
+				<h2 onClick = {this.onSubmit}>+Set</h2>
+				<h2> {showBin ? bin : null} </h2>
 			</div>
 		</div>
 		);
