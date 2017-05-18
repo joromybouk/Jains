@@ -63,7 +63,7 @@ class Weight extends React.Component{
 
 	newWeightAdded(weight){
 		var weights = this.state.weights;
-		weights.push(weight);
+		weights.unshift(weight);
 		this.setState({
 			weights: weights,
 			text: '',
@@ -75,7 +75,6 @@ class Weight extends React.Component{
 	render(){
 		const weightList = this.state.weights;
 		const remove = this.removeWeight;
-		weightList.reverse();
 
 		const weightsDisplay =(
 			weightList.map(function(weight,i){
