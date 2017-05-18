@@ -26,10 +26,9 @@
 }
 
 
-
 .exercisetitle h1{
 	float:left;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	font-family: "serif";
 	color:black;
 	text-align: left;
@@ -39,7 +38,7 @@
 }
 
 .exercisetitle h2{
-	font-size: 1.4em;
+	font-size: 1.2em;
 	float:right;
 	font-family: "serif";
 	color:black;
