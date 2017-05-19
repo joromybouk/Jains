@@ -7,6 +7,9 @@ import { registerWorkoutInfo } from '../../../actions/workoutActions';
 
 require('../../css/buttons.css');
 require('../../css/musclelist.css');
+require('../../css/images.css');
+
+var Logo = require('../../../images/jainslogo.png');
 
 // <MuscleList muscles={this.state.muscles} />
 class Workout extends React.Component{
@@ -185,6 +188,13 @@ class Workout extends React.Component{
  				<div className = "titleborder"></div>
  				{hideAll ? muscleDivInv : muscleDivVis}
  				{exerciseOption ? null : options}
+
+ 				<center>
+					<div>
+						<img src={Logo} className= "logo" />
+					</div>
+				</center>
+
  			</div>
  		)
  	}

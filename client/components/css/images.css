@@ -1,6 +1,19 @@
 
 .weightimage{
-
 	height:14em;
 	width: 14em;
+}
+
+
+.logosign {
+	width: 10em;
+	height: 9.8em;
+}
+
+.logo {
+	width: 10em;
+	height: 9.8em;
+    bottom:0px;
+    left:50%;
+    margin-top: 2.5em;
 }

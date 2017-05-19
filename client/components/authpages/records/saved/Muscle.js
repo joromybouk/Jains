@@ -8,6 +8,9 @@ import MuscleList from './MuscleList';
 require('../../../css/musclelist.css');
 require('../../../css/buttons.css');
 require('../../../css/titles.css');
+require('../../../css/images.css');
+
+var Logo = require('../../../../images/jainslogo.png');
 
 
 class Muscle extends React.Component{
@@ -193,6 +196,13 @@ class Muscle extends React.Component{
  				<div className = "titleborder"></div>
  					{hideAll ? muscleDivInv : muscleDivVis}
  					{exerciseOption ? null : options}
+ 				
+ 				<center>
+					<div>
+						<img src={Logo} className= "logo" />
+					</div>
+				</center>
+
  				</div>
 			)
 		}
