@@ -10,9 +10,13 @@ require('../../css/styles.css');
 require('../../css/records.css');
 require('../../css/titles.css');
 require('../../css/images.css');
+require('../../css/buttons.css');
 import Scale from '../../../images/scale.svg';
 
+var LineChart = require('react-d3-basic').LineChart;
 
+var randomData = [
+  ];
 
 class Weight extends React.Component{
 	constructor(props){
@@ -21,11 +25,13 @@ class Weight extends React.Component{
 			weights: [],
 			text :'',
 			showBin : false,
+			showGraph : false,
 		}
 		this.getInitalWeights();
 		this.onSubmit=this.onSubmit.bind(this);
 		this.newWeightAdded = this.newWeightAdded.bind(this);
 		this.removeWeight = this.removeWeight.bind(this);
+		this.clickButton = this.clickButton.bind(this);
 	} 
 	onSubmit(e){
 		e.preventDefault();
@@ -33,6 +39,15 @@ class Weight extends React.Component{
 		current = !current;
 		this.setState({
 			showBin : current,
+		})
+	}
+
+	clickButton(e){
+		e.preventDefault();
+		var current = this.state.showGraph;
+		current = !current;
+		this.setState({
+			showGraph : current,
 		})
 	}
 	
@@ -75,7 +90,95 @@ class Weight extends React.Component{
 		//store this newly added weight in database
 
 	}
+
+	pushweight(weight,index,data){
+		data.push({
+			"Weight":weight,
+			"index" : index
+		})
+		return data;
+	}
+
+
+
 	render(){
+
+		
+		var showButton = false;
+
+		randomData =[];
+
+		
+
+		if(this.state.weights.length > 0){
+			showButton = true;
+			var weightIndex = -1;
+			var index = 6;
+
+			var today = new Date();
+			var date;
+			var dd = today.getDate();
+			var weightDate;
+
+			while(index != 0){
+				weightIndex += 1;
+
+				if(weightIndex >= this.state.weights.length ){
+					while(index != 0){
+						randomData=this.pushweight(0,index,randomData);
+						index --;
+					}
+					break;
+				}
+				weightDate = this.state.weights[weightIndex].date.substring(0,2);
+				if( (dd-6+index)%31 == weightDate){
+					randomData=this.pushweight(this.state.weights[weightIndex].weight,index,randomData);
+					while(dd-6+index == weightDate){
+						weightIndex += 1;
+
+						if(weightIndex >= this.state.weights.length ){
+							break;
+						}
+						weightDate = this.state.weights[weightIndex].date.substring(0,2);
+
+					}
+					weightIndex -= 1;
+				}
+				else{
+					randomData=this.pushweight(0,i,randomData);
+				}
+				index -= 1;
+			}
+		}
+
+	
+
+		var showGraph = this.state.showGraph;
+
+		var chartSeries = [
+	      {
+	      	name: 'Weight recorded this week',
+	        field: 'Weight',
+	        color: '#000080'
+	      }
+	    ],
+	    width = 350,
+		height = 200,
+	    // set your x range
+	    xRange = [0, width],
+	    // set your label name
+	    xLabel = "Date",
+	    xScale = 'time',
+	    yRange = [height/2, 0],	
+	    // set your label name
+	    x = function(d) {	
+	      return d.index;
+	    },
+
+
+
+	     yDomain = d3.extent(randomData, function(d) {return d.Weight;})
+
 		const weightList = this.state.weights;
 		const remove = this.removeWeight;
 
@@ -85,6 +188,7 @@ class Weight extends React.Component{
  				})
 		);
 
+
  		const noRecords = (
  			<div className= "records">
 	 			<center>
@@ -93,23 +197,59 @@ class Weight extends React.Component{
  			</div>
  		);
 
+ 		const graph = (
+ 		<center>
+			<div className = "chart">
+				<LineChart
+			      width= {width}
+			      height= {height}
+			      data= {randomData}
+			      chartSeries= {chartSeries}
+			      x= {x}
+			      xScale={xScale}
+			      yRange = {yRange}
+			      yDomain= {yDomain}
+			    />
+			 </div>
+		 </center>
+		);
+
+		var buttonText = "This week";
+		if(showGraph){
+			buttonText = "Hide"
+		}
+
+		const graphButton = (
+			
+			<center>
+			<div>
+				<button className = "graphbutton" onClick = {this.clickButton} >{buttonText}</button>
+				{showGraph ? graph : null}
+
+			</div>
+			</center>
+		);
+
 		return(
 			<div>
-			
 				
+
 				<center>
 				<div className ="titles">
 					<h1>Weight Records</h1>
 				</div>
+
 						<WeightInput newWeightAdded={this.newWeightAdded} />
+						
+						{showButton ? graphButton : null}
+
 						{weightsDisplay}
+
+						{noRecords}
 						<div className = "weightimgdiv">
 							<Scale className= "weightimage" />
 						</div>
-
-						{noRecords}
-				
-
+						
 				</center>
 			</div>
 		);

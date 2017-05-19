@@ -80,7 +80,7 @@ class ExerciseInput extends React.Component{
 						type ="number"
 						/>
 					</div>
-					<div className = "tick">
+					<div className = "ticked">
 						 <p onClick={this.onSubmit}> &nbsp;&#10003; </p>
 					</div>
 

@@ -1,7 +1,8 @@
 .root {display :inline-block;}
 
 
-.records { margin-top: 7.5em}
+.records { margin-top: 5.0em;
+margin-bottom: 3.0em;}
 
 .musclerecord{
 	float:left;
@@ -12,4 +13,5 @@
 .musclenamediv{
 	width: 100%;
 }
+
 

@@ -19,8 +19,12 @@
 	text-align: center;
 }
 
-.tick{
+.ticked{
 	display: inline-block;
 	margin-left: 0.5em;
 	cursor: pointer;
 }
+
+.tickle{
+      visibility:hidden;
+    }
