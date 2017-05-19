@@ -32,6 +32,7 @@
 
 
 
+
 .exercisetitle h3{
 	float:left;
 	font-size: 1.5em;
@@ -59,7 +60,7 @@
 	font-size: 1.5em;
 	float:right;
 	font-family: "serif";
-	color:black;
+	color:black;	
 	text-align: right;
 	color: #000080;
 	cursor: pointer;
@@ -67,12 +68,13 @@
 
 
 .muscletitle h1{
+	text-align: left;
 	color: #000080;
 	font-size: 2.75em;
 	display: inline-block;
 	margin-bottom: 0em;
 	font-family: "serif";
 	font-weight: normal;
-	text-align: left;
+	
 
 }

@@ -68,6 +68,8 @@ class SettingsMain extends React.Component{
 	render(){
 		const { errors } = this.state;
 		return(
+			<div className = "row">
+				<div className = "col-md-4 col-md-offset-4">
 			<div className ="titles">
 				<center>
 					<h1>Account Settings</h1>
@@ -111,6 +113,8 @@ class SettingsMain extends React.Component{
 				</div>
 				
 			</form>
+			</div>
+			</div>
 			</div>
 		);
 	}

@@ -26,6 +26,7 @@ class Exercises extends React.Component{
 
 		return(
 			<div>
+
 				<div className ="exercisetitle">
 					<h3> { name }: </h3>
 				</div>

@@ -104,14 +104,16 @@ class Muscle extends React.Component{
 		return(
 			<div className = "container">
 				{titleDisp}
+				
 				<div onClick={this.onSubmit}>
-				{ show ? muscleDispDiv : null  }
+						{ show ? muscleDispDiv : null  }
 				</div>
 				{showBin ? bin : null}
 			</div>
 			)
 		}
 	}
+
 
 export default Muscle;
 

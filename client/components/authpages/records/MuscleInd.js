@@ -5,6 +5,7 @@ import Exercises from './Exercises';
 import { connect } from 'react-redux';
 
 require('../../css/titles.css');
+require('../../css/records.css');
 
 class MuscleInd extends React.Component{
 	constructor(){
@@ -26,12 +27,14 @@ class MuscleInd extends React.Component{
 
 	
 		return(
-			<div>
+		<div className="container">
+		
 				<div className ="muscletitle">
 					<h1> { name } </h1>
+
 				</div>
 				{exerciseDisp}
-			</div>
+		</div>
 			)
 		}
 	}
