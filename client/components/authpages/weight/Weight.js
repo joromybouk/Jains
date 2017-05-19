@@ -109,9 +109,12 @@ class Weight extends React.Component{
 		randomData =[];
 
 		
+		var latestRecorded = 0;
+
+		var actualLen = 0;
 
 		if(this.state.weights.length > 0){
-			showButton = true;
+			
 			var weightIndex = -1;
 			var index = 6;
 
@@ -125,13 +128,15 @@ class Weight extends React.Component{
 
 				if(weightIndex >= this.state.weights.length ){
 					while(index != 0){
-						randomData=this.pushweight(0,index,randomData);
+						randomData=this.pushweight(latestRecorded,index,randomData);
 						index --;
 					}
 					break;
 				}
 				weightDate = this.state.weights[weightIndex].date.substring(0,2);
 				if( (dd-6+index)%31 == weightDate){
+					actualLen++;
+					latestRecorded = this.state.weights[weightIndex].weight;
 					randomData=this.pushweight(this.state.weights[weightIndex].weight,index,randomData);
 					while(dd-6+index == weightDate){
 						weightIndex += 1;
@@ -145,12 +150,14 @@ class Weight extends React.Component{
 					weightIndex -= 1;
 				}
 				else{
-					randomData=this.pushweight(0,i,randomData);
+					randomData=this.pushweight(latestRecorded,i,randomData);
 				}
 				index -= 1;
 			}
 		}
-
+		if(actualLen > 1){
+			showButton = true;
+		}
 	
 
 		var showGraph = this.state.showGraph;
@@ -230,6 +237,11 @@ class Weight extends React.Component{
 			</center>
 		);
 
+		const makegap = (
+			<div className="gap">
+			</div>
+		)
+
 		return(
 			<div>
 				
@@ -243,6 +255,7 @@ class Weight extends React.Component{
 						
 						{showButton ? graphButton : null}
 
+						{showButton ? null : makegap}
 						{weightsDisplay}
 
 						{noRecords}
