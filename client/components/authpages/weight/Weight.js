@@ -150,7 +150,7 @@ class Weight extends React.Component{
 					weightIndex -= 1;
 				}
 				else{
-					randomData=this.pushweight(latestRecorded,i,randomData);
+					randomData=this.pushweight(latestRecorded,index,randomData);
 				}
 				index -= 1;
 			}
